@@ -98,12 +98,12 @@ h2.plain{text-transform:none}
 .opt.picked{background:var(--gold-soft)}
 .sub{font:600 13px "Barlow Condensed";letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:6px 0 10px}
 
-/* timeout breath */
-.breath{display:grid;place-items:center;gap:22px;text-align:center;color:#fff}
-.ring{width:180px;height:180px;border-radius:50%;border:4px solid var(--gold);display:grid;place-items:center;animation:breathe 1.75s ease-in-out both}
-.ring span{font:700 22px "Barlow Condensed";letter-spacing:.1em;text-transform:uppercase}
-.breath p{font:700 clamp(26px,4vw,40px) "Barlow Condensed";margin:0}
-@keyframes breathe{0%{transform:scale(.6);opacity:.2}50%{transform:scale(1.05);opacity:1}100%{transform:scale(.95);opacity:1}}
+/* timeout breath: the sharp scene slowly blurs and dims while "Breathe" fades in, like the Figma prototype */
+.bg.breathing{transition:filter 1.6s ease-in-out}
+.breath{display:grid;place-items:center;text-align:center;color:#fff;min-height:40vh}
+.breath p{font:500 clamp(24px,3.4vw,36px) Barlow,"Barlow Condensed",sans-serif;margin:0;text-shadow:0 2px 18px rgba(0,0,0,.5);animation:breathe 2.4s ease-in-out both}
+@keyframes breathe{0%{opacity:0;transform:scale(.97)}45%{opacity:1;transform:scale(1.02)}100%{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.breath p{animation:none}.bg.breathing{transition:none}}
 
 /* reveal */
 .guess{display:flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--line);border-radius:8px;padding:12px 14px;margin:6px 0 18px}
@@ -441,16 +441,19 @@ function render(id){
       clipBtn.classList.add('show','pulse'); break;
     case 'timeout': {
       const t = TIMEOUTS[s.key];
-      h = `<div class="breath" id="breath"><div class="ring"><span>Mental timeout</span></div><p>${t.q}</p></div>`;
+      h = `<div class="breath" id="breath"><p>${t.q}</p></div>`;
       main.innerHTML = `<div class="scene">${h}</div>`;
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Start on the sharp scene, then let it blur and dim as the learner takes a breath.
+      bg.className = 'bg breathing'; void bg.offsetWidth;
+      requestAnimationFrame(()=>{ bg.className = 'bg breathing blur'; });
       setTimeout(()=>{
         main.innerHTML = `<div class="scene"><div class="card mid"><span class="chip">Mental timeout</span>
           <p class="lede" id="focus" tabindex="-1">${t.lead}</p><div class="sub">Tap your best guess</div>
           <div class="choices">${t.opts.map((o,i)=>`<button class="opt" type="button" data-guess="${i}"><span class="k">${i+1}</span><span>${o}</span></button>`).join('')}</div></div></div>`;
         const f = document.getElementById('focus'); f && f.focus({preventScroll:true});
         main.querySelectorAll('[data-guess]').forEach(b=>b.onclick=()=>{ state.guess[s.key]=+b.dataset.guess; b.classList.add('picked'); setTimeout(()=>go(s.next),250); });
-      }, reduce?300:1800);
+      }, reduce?300:2600);
       return; }
     case 'decision':
       h = `<div class="row"><div class="card narrow"><span class="chip">${s.chip}</span><h2 id="focus" tabindex="-1">${s.h}</h2><p>${s.body}</p></div>
