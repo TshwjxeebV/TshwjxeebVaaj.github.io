@@ -1015,9 +1015,9 @@ lab += evaluation(
      ("4 · Results", "A safer lab.", "More near misses reported, and fewer inspection findings and incidents.", "Planned")])
 lab += access(
     ["Every hazard pictogram has a text label, so color is never the only cue.",
-     "A Listen button reads every lesson aloud, and the on-screen text doubles as the transcript.",
+     "Every lesson has a Listen button that reads it aloud and a Read transcript button.",
      "Experienced hires can test out with a short self-check; everyone else follows a guided path.",
-     "No time limit on the final check or any practice activity.",
+     "No time limit on the final check. The one timed scenario, First 60 Seconds, has a timer you can turn off.",
      "Alt text on every graphic, tap-to-place sorting instead of drag and drop, and every activity works with a keyboard."],
     ["Check every color pair in the course theme against WCAG 2.2 AA contrast.",
      "Test the full course with a screen reader.",

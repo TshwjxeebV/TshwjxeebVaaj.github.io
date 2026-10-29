@@ -3,744 +3,905 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lab Ready · Chemical Safety Onboarding</title>
-<meta name="description" content="A scenario-based chemical safety onboarding course for new lab technicians. Seven decisions, practiced. Portfolio concept by Tshwjxeeb Vaaj.">
-<meta property="og:title" content="Lab Ready · Chemical Safety Onboarding">
-<meta property="og:description" content="Seven safety decisions new lab technicians actually face, practiced in short scenarios.">
-<meta property="og:image" content="../../assets/img/labready-hero.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C2410C'/%3E%3Cpath d='M26 14h12M29 14v14L18 48a4 4 0 0 0 3.5 6h21a4 4 0 0 0 3.5-6L35 28V14' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>Lab Ready: Chemical Safety for New Lab Technicians</title>
+<meta name="description" content="A scenario-based chemical safety onboarding course for new lab technicians. Seven moments, seven decisions. Portfolio concept by Tshwjxeeb Vaaj.">
+<meta property="og:title" content="Lab Ready: Chemical Safety for New Lab Technicians">
+<meta property="og:description" content="Seven moments where lab safety decisions happen, practiced in short scenarios.">
+<meta property="og:image" content="img/cover.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C2400D'/%3E%3Cpath d='M26 14h12M29 14v14L18 48a4 4 0 0 0 3.5 6h21a4 4 0 0 0 3.5-6L35 28V14' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme: light;
-  --accent:#C2410C; --accent-ink:#9A3412; --accent-soft:#FDF1EA; --accent-line:#F4C9B2;
-  --ink:#1F2328; --muted:#5B6168; --line:#E4E2DF; --bg:#FFFFFF; --panel:#F7F6F4;
-  --good:#1F7A4D; --good-soft:#E7F4EC; --bad:#B42318; --bad-soft:#FDECEA; --warn:#9A6700; --warn-soft:#FFF6DB;
-  --body:"Roboto Slab", Georgia, serif; --ui:"Roboto", system-ui, -apple-system, sans-serif;
-  --r:10px;
+  --accent:#C2400D; --accent-dark:#9A320A; --peach:#FDF1EC; --peach-line:#F3C9B6;
+  --ink:#2B2B2B; --muted:#6B6B6B; --line:#E2E2E2; --band:#F4F4F4; --bg:#FFFFFF;
+  --good:#1F7A4D; --good-soft:#E8F4EC; --bad:#B42318; --bad-soft:#FDECEA;
+  --serif:"Merriweather", Georgia, "Times New Roman", serif;
+  --sans:"Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --col:720px;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased}
-button{font:inherit;color:inherit}
-a{color:var(--accent-ink)}
-:focus-visible{outline:3px solid #2563EB;outline-offset:2px;border-radius:6px}
-main:focus,main:focus-visible,.act:focus{outline:none}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 17px/1.75 var(--serif);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+a{color:var(--accent)}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid #2563EB;outline-offset:2px}
+main:focus{outline:none}
+.col{max-width:calc(var(--col) + 40px);margin:0 auto;padding:0 20px}
+.wide{max-width:1000px;margin:0 auto;padding:0 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+b,strong{font-weight:700}
 
-/* top bar */
-.top{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
-.top-in{display:flex;align-items:center;gap:12px;height:56px;padding:0 16px;max-width:1100px;margin:0 auto}
-.icon-btn{border:0;background:none;width:40px;height:40px;border-radius:8px;display:grid;place-items:center;cursor:pointer;flex:none}
-.icon-btn:hover{background:var(--panel)}
-.top-title{font:500 14px var(--ui);color:var(--muted);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.top-title b{color:var(--ink);font-weight:700}
-.prog{height:3px;background:var(--line)}
-.prog span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
-.back-link{font:500 13px var(--ui);color:var(--muted);text-decoration:none;white-space:nowrap}
-.back-link:hover{color:var(--ink)}
+/* top bar + drawer */
+.topbar{position:sticky;top:0;z-index:20;background:#F5F5F5;height:44px;display:flex;align-items:center;gap:10px;padding:0 12px;font:500 13px var(--sans)}
+.topbar .menu-btn{width:36px;height:36px;border:0;background:none;display:grid;place-items:center;cursor:pointer;border-radius:4px}
+.topbar .menu-btn:hover{background:#E8E8E8}
+.topbar .crumb{border:0;background:none;padding:4px 2px;cursor:pointer;font:500 13px var(--sans);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60vw}
+.topbar .crumb:hover{text-decoration:underline}
+.topbar .spacer{flex:1}
+.topbar .pct{color:var(--muted);font-weight:400}
+.progress{position:sticky;top:44px;z-index:19;height:3px;background:#E8E8E8}
+.progress span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.drawer{position:fixed;inset:0;z-index:40;display:none}
+.drawer.open{display:block}
+.drawer .scrim{position:absolute;inset:0;background:rgba(0,0,0,.35)}
+.drawer nav{position:absolute;left:0;top:0;bottom:0;width:min(360px,90vw);background:#fff;overflow:auto;padding:16px 0 24px;box-shadow:4px 0 24px rgba(0,0,0,.15)}
+.drawer .d-title{font:700 16px/1.3 var(--sans);padding:6px 22px 12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.drawer .d-title small{display:block;font:400 13px var(--sans);color:var(--muted);margin-top:4px}
 
-/* side menu */
-.menu{position:fixed;inset:0;z-index:30;display:none}
-.menu.open{display:block}
-.menu .scrim{position:absolute;inset:0;background:rgba(15,15,15,.35)}
-.menu nav{position:absolute;left:0;top:0;bottom:0;width:min(340px,88vw);background:#fff;padding:18px 0;overflow:auto;box-shadow:4px 0 24px rgba(0,0,0,.12)}
-.menu h2{font:700 13px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:6px 22px 10px}
-.menu ol{list-style:none;margin:0;padding:0}
-.menu li button{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;border:0;background:none;padding:10px 22px;cursor:pointer;font:400 15px/1.35 var(--ui)}
-.menu li button:hover{background:var(--panel)}
-.menu li button[aria-current="page"]{background:var(--accent-soft);font-weight:700}
-.menu .dot{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);margin-top:1px;display:grid;place-items:center;font-size:12px;color:#fff}
-.menu .done .dot{background:var(--good);border-color:var(--good)}
+/* lesson menu (cover + drawer) */
+.menu-sec{font:500 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:26px 0 10px;border-bottom:1px solid var(--line)}
+.drawer .menu-sec{padding:18px 22px 8px;border:0}
+.menu-row{display:flex;align-items:center;gap:14px;width:100%;border:0;background:none;text-align:left;padding:13px 6px;cursor:pointer;font:400 15px var(--sans);color:var(--ink);border-radius:4px}
+.drawer .menu-row{padding:11px 22px;border-radius:0}
+.menu-row:hover{background:#F7F7F7}
+.menu-row[aria-current="page"]{background:var(--peach);font-weight:500}
+.menu-row .ico{flex:none;width:18px;color:#8A8A8A}
+.menu-row .t{flex:1}
+.menu-row .st{flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid #CFCFCF;display:grid;place-items:center;color:#fff;font-size:11px}
+.menu-row.done .st{background:var(--good);border-color:var(--good)}
 
-/* lesson */
-main{max-width:760px;margin:0 auto;padding:40px 20px 96px}
-.count{font:italic 400 14px var(--body);color:var(--muted);margin:0 0 6px}
-h1{font:700 clamp(30px,6vw,42px)/1.15 var(--ui);margin:0 0 18px;letter-spacing:-.01em}
-h2{font:700 24px/1.25 var(--ui);margin:44px 0 12px}
-h3{font:700 18px/1.3 var(--ui);margin:0 0 8px}
-.rule{width:120px;height:3px;background:var(--accent);margin:0 0 30px}
-p{margin:0 0 16px}
-.lead{font-size:19px}
-.why{background:var(--accent-soft);border-radius:var(--r);padding:18px 22px;margin:0 0 18px}
-.why small{display:block;font:700 12px var(--ui);letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:4px}
-.why p{margin:0}
-.tools{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 28px}
-.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font:500 14px var(--ui);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
-.chip:hover{background:var(--panel)}
-.chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent-ink)}
-.hero{margin:0 -20px 28px;position:relative;background:#111;overflow:hidden}
-.hero img{display:block;width:100%;height:clamp(200px,42vw,340px);object-fit:cover;opacity:.75}
-.hero p{position:absolute;left:24px;bottom:22px;right:24px;margin:0;color:#fff;font:400 clamp(20px,4vw,28px)/1.3 var(--ui);max-width:560px}
-.hero p::before{content:"";display:block;width:48px;height:3px;background:#fff;margin-bottom:12px}
-ul.tidy{padding-left:22px;margin:0 0 16px}
-ul.tidy li{margin:4px 0}
-.callout{border-left:4px solid var(--accent);padding:6px 0 6px 18px;margin:24px 0;font:400 20px/1.45 var(--ui)}
-.note{font:400 14px/1.5 var(--ui);color:var(--muted)}
+/* cover */
+.cover{position:relative;min-height:500px;background:#111 center/cover no-repeat;display:flex;align-items:center}
+.cover::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.1) 100%)}
+.cover .in{position:relative;max-width:1000px;width:100%;margin:0 auto;padding:60px 20px}
+.cover .by{display:flex;align-items:center;gap:10px;color:#fff;font:500 13px var(--sans);margin-bottom:22px}
+.avatar{width:30px;height:30px;border-radius:50%;background:#DADADA;flex:none;display:grid;place-items:center;font:700 12px var(--sans);color:#555}
+.cover h1{color:#fff;font:700 clamp(32px,5.4vw,46px)/1.15 var(--sans);margin:0 0 26px;max-width:600px}
+.cover .ctas{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.start{border:0;background:#fff;color:#111;border-radius:999px;padding:15px 42px;font:700 13px var(--sans);letter-spacing:.1em;cursor:pointer}
+.start:hover{background:#F1F1F1}
+.details-btn{border:0;background:none;color:#fff;font:700 13px var(--sans);letter-spacing:.1em;cursor:pointer;display:flex;align-items:center;gap:8px}
+.details{background:#fff;border-radius:6px;padding:18px 20px;margin-top:18px;max-width:560px;font:400 14.5px/1.6 var(--sans)}
+.details ul{margin:6px 0 0;padding-left:18px}
+.page-foot{font:400 12.5px/1.6 var(--sans);color:var(--muted);padding:36px 20px 30px;max-width:1000px;margin:0 auto}
+.page-foot a{color:var(--muted);margin-right:16px}
 
-/* activity shell */
-.act{border:1px solid var(--line);border-radius:14px;padding:22px;margin:28px 0;background:#fff}
-.act-tag{font:700 12px var(--ui);letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 6px}
-.act .q{font:500 18px/1.45 var(--ui);margin:0 0 14px}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:12px 14px;cursor:pointer;font:400 16px/1.4 var(--ui);width:100%}
-.opt:hover:not([disabled]){border-color:#B9B5AF;background:var(--panel)}
-.opt .k{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid #B9B5AF;display:grid;place-items:center;font:700 13px var(--ui);color:var(--muted)}
+/* lesson header */
+.lh{padding:56px 0 46px;border-bottom:1px solid var(--line)}
+.lh .count{font:italic 300 13px var(--serif);color:var(--muted);margin:0 0 8px}
+.lh h1{font:700 clamp(30px,5vw,40px)/1.2 var(--sans);margin:0 0 18px}
+.lh .by{display:flex;align-items:center;gap:10px;font:400 12.5px var(--sans);color:var(--muted);margin-bottom:34px}
+.lh .rule{width:100px;height:3px;background:var(--accent)}
+
+/* blocks */
+.blk{padding:22px 0}
+.blk.band{background:var(--band);padding:56px 0}
+.blk.tight{padding:12px 0}
+p{margin:0 0 18px}
+.lead-b b{font-weight:700}
+.why{background:var(--peach);border-radius:4px;padding:18px 22px;margin:30px 0 16px}
+.why small{display:block;font:500 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.why p{margin:0;font-size:15.5px;line-height:1.7}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.chip{border:1px solid #D5D5D5;background:#fff;border-radius:999px;padding:6px 14px;font:500 12.5px var(--sans);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{background:#F6F6F6}
+.chip .tri{color:var(--accent)}
+.chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.transcript{background:#FAFAFA;border:1px solid var(--line);border-radius:4px;padding:16px 18px;font:400 14.5px/1.65 var(--sans);margin:10px 0 0;max-height:320px;overflow:auto}
+.photo-text{position:relative;background:#000 center/cover no-repeat;min-height:440px;display:flex;align-items:center;margin:20px 0}
+.photo-text::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.35) 55%,rgba(0,0,0,0))}
+.photo-text .in{position:relative;max-width:1000px;width:100%;margin:0 auto;padding:40px 20px}
+.photo-text p{color:#fff;font:400 clamp(20px,3vw,25px)/1.45 var(--sans);max-width:480px;margin:0}
+.photo-text p::before{content:"";display:block;width:56px;height:3px;background:#fff;margin-bottom:22px}
+.note{text-align:center;padding:52px 0}
+.note::before{content:"";display:block;width:56px;height:3px;background:var(--accent);margin:0 auto 26px}
+.note p{font:300 clamp(21px,3.2vw,26px)/1.45 var(--sans);margin:0}
+h2.bt{font:700 21px/1.3 var(--sans);margin:0 0 22px}
+.sub{font:400 14.5px var(--sans);color:var(--muted);margin:-12px 0 20px}
+.card{background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.08);border-radius:2px}
+.kc{border-left:4px solid var(--accent);padding:28px 30px 26px}
+@media (max-width:560px){.kc{padding:22px 18px}}
+.kc .tag{font:500 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+.kc .q{font:500 18px/1.45 var(--sans);margin:0 0 16px}
+.kc .hint{font:400 13.5px var(--sans);color:var(--muted);margin:-8px 0 16px}
+.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:1px solid #D9D9D9;background:#fff;border-radius:3px;padding:12px 14px;margin:0 0 10px;cursor:pointer;font:300 15.5px/1.45 var(--serif)}
+.opt:hover:not([disabled]){border-color:#B0B0B0}
+.opt .r{flex:none;width:16px;height:16px;border-radius:50%;border:1.5px solid #8A8A8A}
+.opt.sel{border-color:var(--accent);background:var(--peach)}
+.opt.sel .r{border-color:var(--accent);background:var(--accent);box-shadow:inset 0 0 0 3px var(--peach)}
 .opt.right{border-color:var(--good);background:var(--good-soft)}
-.opt.right .k{background:var(--good);border-color:var(--good);color:#fff}
+.opt.right .r{border-color:var(--good);background:var(--good);box-shadow:inset 0 0 0 3px var(--good-soft)}
 .opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
-.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt.wrong .r{border-color:var(--bad);background:var(--bad);box-shadow:inset 0 0 0 3px var(--bad-soft)}
 .opt[disabled]{cursor:default}
-.fb{margin-top:14px;border-radius:10px;padding:14px 16px;font:400 15.5px/1.5 var(--ui)}
+.btn{display:inline-block;border:0;background:var(--accent);color:#fff;border-radius:2px;padding:13px 34px;font:700 12.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:8px}
+.btn:hover{background:var(--accent-dark)}
+.btn[disabled]{opacity:.4;cursor:default}
+.btn.ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent)}
+.btn.ghost:hover{background:var(--peach)}
+.fb{margin-top:16px;padding:14px 16px;border-radius:3px;font:400 14.5px/1.6 var(--sans)}
 .fb b{display:block;margin-bottom:2px}
 .fb.ok{background:var(--good-soft);color:#14532D}
 .fb.no{background:var(--bad-soft);color:#7A1D14}
-.fb.info{background:var(--panel)}
-.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;background:var(--accent);color:#fff;padding:11px 20px;font:700 15px var(--ui);cursor:pointer;text-decoration:none}
-.btn:hover{background:var(--accent-ink)}
-.btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
-.btn.ghost:hover{background:var(--panel)}
-.btn[disabled]{opacity:.45;cursor:default}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.score{font:700 14px var(--ui);color:var(--muted)}
-
-/* label lesson */
-.ghs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:18px 0 8px}
-.ghs figure{margin:0;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center;font:400 14px/1.35 var(--ui)}
-.ghs svg{width:64px;height:64px;display:block;margin:0 auto 8px}
-.ghs b{display:block;font-weight:700}
-.label-card{border:2px solid var(--ink);border-radius:8px;padding:14px 16px;font:400 15px/1.45 var(--ui);max-width:460px;margin:8px 0 16px;background:#fff}
-.label-card .nm{font:700 20px var(--ui)}
-.label-card .sig{display:inline-block;margin:6px 0;font:900 18px var(--ui);letter-spacing:.06em}
-.label-card .picts{display:flex;gap:8px;margin:6px 0}
-.label-card .picts svg{width:46px;height:46px}
-
-/* pyramid */
-.pyr{display:grid;gap:8px;justify-items:center;margin:12px 0 4px}
-.pyr div{border-radius:6px;padding:10px;text-align:center;font:400 14px/1.35 var(--ui)}
-.pyr b{display:block;font-size:16px}
-.pyr-cap{font:700 11px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center}
-.slots{display:grid;gap:8px;margin:14px 0}
-.slot{border:1.5px dashed #B9B5AF;border-radius:10px;padding:10px 14px;min-height:46px;font:500 15px var(--ui);display:flex;align-items:center;gap:10px;color:var(--muted)}
-.slot.filled{border-style:solid;color:var(--ink)}
-.slot.filled.right{border-color:var(--good);background:var(--good-soft)}
-.slot.filled.wrong{border-color:var(--bad);background:var(--bad-soft)}
-.slot .n{font:700 13px var(--ui);width:22px;color:var(--muted)}
-.pool{display:flex;flex-wrap:wrap;gap:8px}
-.pool button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:500 15px var(--ui);cursor:pointer}
-.pool button:hover{background:var(--panel)}
-
-/* hood scene */
-.scene{position:relative;border-radius:12px;overflow:hidden;background:#EEF1F3}
-.scene svg{display:block;width:100%;height:auto}
-.hs{cursor:pointer}
-.hs .ring{fill:var(--accent);stroke:#fff;stroke-width:3}
-.hs text{fill:#fff;font:700 15px var(--ui);pointer-events:none}
-.hs:hover .ring,.hs:focus .ring{fill:var(--accent-ink)}
-.hs.found .ring{fill:var(--good)}
-.hs.fine .ring{fill:#6B7280}
-.found-list{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
-.found-list li{border-radius:8px;padding:10px 12px;font:400 15px/1.45 var(--ui)}
-.found-list li.p{background:var(--good-soft)}
-.found-list li.f{background:var(--panel)}
-
-/* spill scenes */
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:12px 0}
-.fact{background:var(--panel);border-radius:8px;padding:10px 12px;font:400 14.5px/1.4 var(--ui)}
-.fact small{display:block;font:700 11px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.rulebox{border:1.5px solid var(--accent-line);background:var(--accent-soft);border-radius:12px;padding:16px 18px;margin:16px 0;font:400 15.5px/1.5 var(--ui)}
-.rulebox b{color:var(--accent-ink)}
-.pager{font:500 14px var(--ui);color:var(--muted)}
-
-/* waste label */
-.wl-wrap{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center}
-@media (max-width:560px){.wl-wrap{grid-template-columns:1fr}.wl-bottle{max-width:110px;margin:0 auto}}
-.wl{border:2px solid var(--ink);border-radius:8px;overflow:hidden;font:400 15px var(--ui);background:#fff}
-.wl button{display:block;width:100%;text-align:left;border:0;border-top:1px solid var(--line);background:#fff;padding:10px 14px;cursor:pointer}
-.wl button:first-child{border-top:0}
-.wl button:hover{background:var(--panel)}
-.wl button small{display:block;font:700 11px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.wl .hdr{background:#FAD933;font:800 20px var(--ui);letter-spacing:.04em}
-.wl .hdr:hover{background:#F2CF1F}
-.wl button.found{box-shadow:inset 4px 0 0 var(--good);background:var(--good-soft)}
-.wl button.fine{box-shadow:inset 4px 0 0 #9CA3AF}
-.wl-bottle button{border:0;background:none;padding:0;cursor:pointer;display:block;width:100%}
-.wl-bottle button.found svg .cap{fill:var(--good)}
-
-/* sort */
-.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px}
-.bin{border:1.5px solid var(--line);border-radius:12px;padding:12px;background:#fff;cursor:pointer;text-align:left;min-height:96px;font:400 14px/1.35 var(--ui)}
-.bin b{display:block;font-size:15px;margin-bottom:6px}
-.bin.ready{border-color:var(--accent);background:var(--accent-soft)}
-.bin .got{display:block;margin-top:4px;font-size:13.5px}
-.pool button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
-
+.fb.info{background:var(--peach);color:#5A2410}
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.pcard{border-top:3px solid var(--accent);padding:20px 20px 22px;text-align:left;border-left:0;border-right:0;border-bottom:0;cursor:pointer;width:100%}
+.pcard:hover{background:#FFFBF9}
+.pcard h3,.gcard h3{font:700 15px/1.4 var(--sans);margin:0 0 8px}
+.pcard p,.gcard p{font:300 14px/1.6 var(--serif);margin:0}
+.pcard .go{display:block;margin-top:12px;font:700 11.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.gcard{border-top:3px solid var(--accent);padding:20px 20px 22px}
+.gcard img{margin:-20px -20px 16px;width:calc(100% + 40px);max-width:none;height:170px;object-fit:cover}
+/* numbered */
+.numbered{position:relative}
+.num-row{position:relative;padding:28px 0 0}
+.num-row .dv{display:flex;align-items:center;gap:0;margin:0 0 26px}
+.num-row .dv::before,.num-row .dv::after{content:"";flex:1;height:1px;background:var(--line)}
+.num-row .dv span{flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font:700 13px var(--sans);margin:0 12px}
+.ncard{border-left:4px solid var(--accent);padding:22px 24px}
+.ncard h3{font:700 15.5px/1.4 var(--sans);margin:0 0 6px}
+.ncard p{font:300 14.5px/1.65 var(--serif);margin:0}
+.ncard.has-img{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center;padding:16px 20px 16px 16px}
+.ncard.has-img img{width:200px;height:112px;object-fit:cover;border-radius:2px}
+@media (max-width:560px){.ncard.has-img{grid-template-columns:1fr}.ncard.has-img img{width:100%;height:auto}}
+/* callout */
+.callout{border-left:4px solid var(--accent);padding:28px 32px}
+@media (max-width:560px){.callout{padding:22px 20px}}
+.callout h3{font:italic 400 18px var(--serif);color:var(--accent);margin:0 0 10px}
+.callout .lede{font:500 14.5px var(--sans);margin:0 0 10px}
+.callout ul{list-style:none;margin:0;padding:0}
+.callout li{position:relative;padding-left:16px;margin:0 0 10px;font-size:15.5px;line-height:1.65}
+.callout li::before{content:"•";position:absolute;left:0;color:var(--muted)}
+/* scenario */
+.who{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.who .av{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:700 18px var(--sans);color:#fff;background:#6B7C93}
+.who .meta b{display:block;font:700 15px var(--sans)}
+.who .meta small{font:400 13px var(--sans);color:var(--muted)}
+.bubble{background:#F5F5F5;border-radius:12px;padding:12px 16px;margin-top:8px;font:italic 300 15.5px/1.6 var(--serif)}
+/* matching */
+.mrow{display:grid;grid-template-columns:1fr 24px 1fr;gap:10px;align-items:center;margin-bottom:12px}
+.mrow .l{border:1px solid #D9D9D9;border-radius:3px;padding:10px 12px;font:400 14px/1.4 var(--sans);background:#fff}
+.mrow .ar{text-align:center;color:#9A9A9A}
+.mrow select{width:100%;border:1px solid #D0D0D0;background:#F1F1F1;border-radius:3px;padding:10px 8px;font:400 14px var(--sans)}
+.mrow.right select{border-color:var(--good);background:var(--good-soft)}
+.mrow.wrong select{border-color:var(--bad);background:var(--bad-soft)}
+@media (max-width:560px){.mrow{grid-template-columns:1fr}.mrow .ar{display:none}}
+/* flashcards */
+.flash{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.fc{perspective:900px;border:0;background:none;padding:0;cursor:pointer;height:190px;text-align:center;width:100%}
+@media (max-width:560px){.fc{height:200px}.fc svg{width:64px;height:64px}.fc .bt2{font-size:13px}.hot{width:30px;height:30px;margin:-15px 0 0 -15px;font-size:12.5px}}
+.fc .inner{display:block;position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.fc.flip .inner{transform:rotateY(180deg)}
+.fc .face{position:absolute;box-sizing:border-box;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid #E1E1E1;border-radius:3px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.fc .back{transform:rotateY(180deg);background:var(--peach);border-color:var(--peach-line)}
+.fc svg{width:84px;height:84px;margin-bottom:12px}
+.fc .ft{font:700 14px/1.35 var(--sans)}
+.fc .bt2{font:300 14px/1.55 var(--serif)}
+.fc .mf{font:500 10.5px var(--sans);letter-spacing:.1em;color:var(--accent);margin-bottom:10px}
+.caption{font:400 13px var(--sans);color:var(--muted);text-align:center;margin-top:14px}
+@media (prefers-reduced-motion:reduce){.fc .inner{transition:none}}
+/* storyline shell */
+.story{background:var(--peach);border:1.5px solid var(--peach-line);border-radius:4px;padding:30px 32px}
+@media (max-width:560px){.story{padding:22px 16px}}
+.story .tag{font:500 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.story h3{font:700 23px/1.3 var(--sans);margin:0 0 10px}
+.story .intro{font-size:15.5px;line-height:1.7;margin:0 0 18px}
+.counter{font:700 13px var(--sans);color:var(--accent);margin:0 0 12px}
+.stage{position:relative;border-radius:3px;overflow:hidden;background:#000;user-select:none;-webkit-user-select:none}
+.stage img{width:100%;height:auto}
+.hot{position:absolute;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;border:2px solid #fff;background:var(--accent);color:#fff;font:700 14px var(--sans);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.35);padding:0}
+.hot:hover{background:var(--accent-dark)}
+.hot.seen{background:var(--good)}
+.hot.fine{background:#6B7280}
+.hot.active{outline:3px solid #fff;outline-offset:2px}
+.pop{background:#fff;border-radius:3px;box-shadow:0 2px 10px rgba(0,0,0,.12);padding:16px 18px;margin-top:14px;font:400 14.5px/1.6 var(--sans)}
+.pop b{display:block;font-size:15px;margin-bottom:2px}
+.pop.ok{border-left:4px solid var(--good)}
+.pop.fineb{border-left:4px solid #9CA3AF}
+.pop.probe{border-left:4px solid var(--accent)}
+.alarm{animation:flash .5s steps(2) 6}
+@keyframes flash{50%{box-shadow:inset 0 0 0 6px #E5484D}}
+/* label decoder */
+.glabel{background:#fff;border:2px solid #222;border-radius:4px;max-width:520px;font:400 14px/1.5 var(--sans);overflow:hidden}
+.glabel button{display:block;width:100%;text-align:left;border:0;border-top:1px solid #E5E5E5;background:#fff;padding:10px 14px 10px 46px;cursor:pointer;position:relative}
+.glabel button:first-child{border-top:0}
+.glabel button:hover{background:#FAFAFA}
+.glabel button .mk{position:absolute;left:10px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font:700 12px var(--sans);display:grid;place-items:center}
+.glabel button.seen .mk{background:var(--good)}
+.glabel small{display:block;font:700 10.5px var(--sans);letter-spacing:.08em;color:#666}
+.glabel .pn{font:900 22px var(--sans);letter-spacing:.02em}
+.glabel .picts{display:flex;gap:10px}
+.glabel .picts svg{width:52px;height:52px}
+.glabel .sig{font:900 20px var(--sans);letter-spacing:.08em}
+/* sorting */
+.sort .current{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);border-radius:3px;max-width:280px;margin:0 auto 20px;padding:20px;text-align:center}
+.sort .current small{display:block;font:400 12px var(--sans);color:var(--muted);margin-bottom:6px}
+.sort .current b{font:500 17px/1.4 var(--sans)}
+.piles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.pile{border:1.5px dashed #C9C9C9;border-radius:3px;background:#fff;min-height:96px;padding:16px 12px;font:500 14.5px/1.4 var(--sans);cursor:pointer;text-align:center}
+.pile:hover{border-color:var(--accent);background:#FFFBF9}
+.pile .got{display:block;font:400 12.5px/1.5 var(--sans);color:var(--good);margin-top:8px}
+.sort .help{font:400 13px var(--sans);color:var(--muted);text-align:center;margin:-8px 0 18px}
+/* tabs */
+.tabs [role=tablist]{display:flex;gap:0;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs [role=tab]{border:0;background:none;padding:12px 18px;font:500 14.5px var(--sans);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs [role=tab][aria-selected=true]{border-bottom-color:var(--accent);color:var(--accent)}
+.tabs [role=tabpanel]{padding:22px 4px 4px}
+.tabs ul{margin:0;padding-left:20px}
+.tabs li{margin:0 0 10px}
 /* checklist */
-.checks{display:grid;gap:8px}
-.check{display:flex;gap:12px;align-items:flex-start;border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;cursor:pointer;font:400 16px/1.4 var(--ui)}
-.check input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--accent);flex:none}
-.check.right{border-color:var(--good);background:var(--good-soft)}
-.check.wrong{border-color:var(--bad);background:var(--bad-soft)}
-.check.miss{border-color:var(--warn);background:var(--warn-soft)}
-
-/* final + rating */
-.result{border-radius:14px;padding:22px;margin:22px 0;font:400 16px/1.5 var(--ui)}
-.result.pass{background:var(--good-soft)}
-.result.fail{background:var(--warn-soft)}
-.result h3{font-size:22px}
-.review{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:6px}
-.review a{font-weight:500}
-.stars{display:flex;gap:8px;flex-wrap:wrap}
-.stars button{width:48px;height:48px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font:700 18px var(--ui);cursor:pointer}
-.stars button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
-
-/* paths */
-.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:18px 0}
-.path{border:1.5px solid var(--line);border-radius:14px;padding:18px;text-align:left;background:#fff;cursor:pointer;font:400 15px/1.5 var(--ui)}
-.path:hover{border-color:var(--accent);background:var(--accent-soft)}
-.path b{display:block;font-size:18px;margin-bottom:4px}
-.outline{list-style:none;counter-reset:o;padding:0;margin:12px 0 0;display:grid;gap:6px}
-.outline li{counter-increment:o;display:flex;gap:12px;font:400 15.5px var(--ui)}
-.outline li::before{content:counter(o);flex:none;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;font:700 13px var(--ui)}
-
-/* card */
-.lr-card{border:2px solid var(--ink);border-radius:14px;padding:20px;font:400 15px/1.45 var(--ui);background:#fff}
-.lr-card header{display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
-.lr-card header span{background:var(--accent);color:#fff;font:700 12px var(--ui);letter-spacing:.08em;padding:4px 10px;border-radius:4px}
-.lr-card header b{font-size:20px}
-.lr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-.lr-grid section{background:var(--panel);border-radius:10px;padding:12px 14px}
-.lr-grid h4{margin:0 0 6px;font:700 13px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)}
-.lr-grid ul{margin:0;padding-left:18px}
-
-/* bottom nav */
-.nav{display:flex;justify-content:space-between;gap:12px;margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
-.nav .btn{min-width:0}
-.foot{max-width:760px;margin:0 auto;padding:0 20px 40px;font:400 13px/1.5 var(--ui);color:var(--muted)}
+.checklist{list-style:none;padding:0;margin:0}
+.checklist label{display:flex;gap:12px;align-items:flex-start;padding:10px 0;font-size:15.5px;line-height:1.55;cursor:pointer;border-bottom:1px solid #F0F0F0}
+.checklist input{width:19px;height:19px;margin:3px 0 0;accent-color:var(--accent);flex:none}
+.checklist .done-msg{margin-top:14px}
+/* accordion */
+.acc{border-top:1px solid var(--line)}
+.acc button{display:flex;justify-content:space-between;align-items:center;width:100%;border:0;border-bottom:1px solid var(--line);background:none;padding:15px 2px;font:700 15px var(--sans);cursor:pointer;text-align:left}
+.acc button span{color:var(--accent);font-size:20px;line-height:1}
+.acc .panel{padding:4px 2px 16px;border-bottom:1px solid var(--line);font-size:15.5px}
+/* first 60 */
+.timer{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px;font:500 14px var(--sans)}
+.timer .clock{font:700 22px var(--sans);color:var(--accent);min-width:64px}
+.timer .bar{flex:1;min-width:120px;height:6px;background:#EEDDD5;border-radius:3px;overflow:hidden}
+.timer .bar span{display:block;height:100%;background:var(--accent)}
+.cards6{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.c6{border:1.5px solid #E0CFC6;background:#fff;border-radius:3px;padding:14px;text-align:left;cursor:pointer;font:400 14.5px/1.45 var(--sans);min-height:72px}
+.c6:hover:not([disabled]){border-color:var(--accent)}
+.c6.done{border-color:var(--good);background:var(--good-soft)}
+.c6 .o{display:inline-block;min-width:22px;font-weight:700;color:var(--good)}
+.steps-done{list-style:none;padding:0;margin:12px 0 0;font:400 14px var(--sans)}
+/* final quiz */
+.qprog{height:3px;background:#E3E3E3;margin:4px 0 18px}
+.qprog span{display:block;height:100%;background:var(--accent);width:0}
+.results{text-align:center;padding:40px 28px;border:1px solid #DDD;border-radius:3px;background:#fff}
+.results .big{font:300 64px/1 var(--sans);color:var(--accent);margin:0 0 12px}
+.results h3{font:700 23px var(--sans);margin:0 0 10px}
+.results .commit{display:inline-flex;gap:10px;align-items:center;background:var(--peach);border-radius:3px;padding:12px 16px;font:500 14.5px var(--sans);margin:16px 0 10px;cursor:pointer;text-align:left}
+.results .commit input{width:18px;height:18px;accent-color:var(--accent)}
+.results small{display:block;font:400 12.5px var(--sans);color:var(--muted)}
+.results ul{list-style:none;padding:0;margin:10px 0 0;font:400 14.5px var(--sans)}
+textarea{width:100%;min-height:110px;border:1px solid #D4D4D4;border-radius:3px;padding:12px 14px;font:300 15px/1.6 var(--serif);resize:vertical;background:#fff}
+.sugs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px}
+.sugs button{border:1.5px solid var(--accent);color:var(--accent);background:#fff;border-radius:999px;padding:5px 12px;font:500 12.5px var(--sans);cursor:pointer}
+.sugs button:hover{background:var(--peach)}
+/* job aid + weekly */
+.jobaid{border:2px solid #222;border-radius:6px;padding:26px 28px;background:#fff}
+@media (max-width:560px){.jobaid{padding:20px 16px}}
+.jobaid header{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.jobaid header span{background:var(--accent);color:#fff;font:700 11.5px var(--sans);letter-spacing:.1em;padding:5px 10px;border-radius:2px}
+.jobaid header b{font:700 19px var(--sans)}
+.ja-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.ja-grid section{background:#F3F3F3;border-radius:2px;padding:16px 18px}
+.ja-grid h4{margin:0 0 6px;font:700 12.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.ja-grid ul{list-style:none;margin:0;padding:0;font:400 14px/1.9 var(--sans)}
+.ja-grid li::before{content:"• ";color:#666}
+.mine{margin-top:14px;border-top:1px dashed #C8C8C8;padding-top:12px;font:400 14px var(--sans)}
+.mine b{color:var(--accent)}
+.attach{display:block;text-align:center;border:1.5px solid var(--accent);color:var(--accent);background:#fff;padding:13px;font:700 12.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;width:100%;margin:28px 0 0}
+.attach:hover{background:var(--peach)}
+.weekly .wk{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:4px 24px}
+.weekly label{display:flex;gap:10px;align-items:flex-start;font:400 14px/1.5 var(--sans);padding:7px 0;cursor:pointer}
+.weekly input{width:18px;height:18px;margin:1px 0 0;accent-color:var(--accent);flex:none}
+.weekly .warn{color:var(--accent);font:500 13px var(--sans);margin:12px 0 0}
+.rate{text-align:center}
+.rate h3{font:700 21px var(--sans);margin:0 0 16px}
+.rate .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.rate button{width:50px;height:50px;border-radius:50%;border:1.5px solid #CCC;background:#fff;font:500 17px var(--sans);cursor:pointer}
+.rate button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.rate small{display:block;font:400 12.5px var(--sans);color:var(--muted);margin-top:12px}
+/* continue */
+.cont{padding:40px 0 70px}
+.cont button{display:block;width:100%;border:0;background:var(--accent);color:#fff;padding:15px;font:700 12.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.cont button:hover{background:var(--accent-dark)}
+.disclaim{font:400 12.5px/1.6 var(--sans);color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:6px}
 
 @media print{
-  .top,.menu,.nav,.tools,.foot,.no-print{display:none!important}
-  main{padding:0}
-  body{font-size:12px}
+  body *{visibility:hidden}
+  #printArea,#printArea *{visibility:visible}
+  #printArea{position:absolute;left:0;top:0;width:100%}
+  .no-print{display:none!important}
 }
 </style>
 </head>
 <body>
-<header class="top">
-  <div class="top-in">
-    <button class="icon-btn" id="menuBtn" aria-label="Open course menu" aria-expanded="false" aria-controls="menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-    <div class="top-title"><b>Lab Ready</b> · <span id="topLesson"></span></div>
-    <a class="back-link" href="../../lab-ready.html">Case study ↗</a>
-  </div>
-  <div class="prog" aria-hidden="true"><span id="progBar"></span></div>
+<header class="topbar" id="topbar" hidden>
+  <button class="menu-btn" id="menuBtn" aria-label="Open course menu" aria-expanded="false" aria-controls="drawer">
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <button class="crumb" id="crumb" type="button"></button>
+  <span class="spacer"></span>
+  <span class="pct" id="pct"></span>
 </header>
+<div class="progress" id="progress" hidden><span id="progBar"></span></div>
 
-<div class="menu" id="menu" aria-hidden="true">
+<div class="drawer" id="drawer" aria-hidden="true">
   <div class="scrim" data-close></div>
   <nav aria-label="Course lessons">
-    <h2>Lab Ready</h2>
-    <ol id="menuList"></ol>
+    <div class="d-title">Lab Ready: Chemical Safety<small id="dProg"></small></div>
+    <div id="drawerMenu"></div>
   </nav>
 </div>
 
-<main id="main" tabindex="-1" aria-live="polite"></main>
-
-<p class="foot">Lab Ready is a portfolio concept course by Tshwjxeeb Vaaj, adapted from Cal/OSHA §5191 and a university Chemical Hygiene Plan. It is not a substitute for your own lab's safety training, SOPs and Chemical Hygiene Plan. Originally built in Articulate Rise 360; rebuilt here in HTML so it stays free to view.</p>
+<main id="app" tabindex="-1"></main>
 
 <script>
 (function(){
 "use strict";
 
-/* ---------- storage (best effort) ---------- */
-const KEY = "labready-v1";
-function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
-const state = Object.assign({done:{}, rating:0, final:null}, load());
+/* ================= storage ================= */
+var KEY="labready-figma-v1";
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ return {}; } }
+var S=load(); S.done=S.done||{};
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){} }
 
-/* ---------- small helpers ---------- */
-const $ = (s, r=document) => r.querySelector(s);
-const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
-const el = (tag, attrs={}, html="") => { const n=document.createElement(tag); for(const k in attrs){ if(k==="class") n.className=attrs[k]; else n.setAttribute(k, attrs[k]); } if(html) n.innerHTML=html; return n; };
-const LETTERS = "ABCDEF";
+/* ================= helpers ================= */
+function $(s,r){ return (r||document).querySelector(s); }
+function $$(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+function h(tag,attrs,html){ var n=document.createElement(tag); if(attrs){ for(var k in attrs){ if(k==="class") n.className=attrs[k]; else n.setAttribute(k,attrs[k]); } } if(html!=null) n.innerHTML=html; return n; }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+function wrap(cls, inner, colCls){ var s=h("section",{class:"blk "+(cls||"")}); var c=h("div",{class:colCls||"col"}); if(typeof inner==="string") c.innerHTML=inner; else c.appendChild(inner); s.appendChild(c); return s; }
 
-/* ---------- GHS pictogram icons (simplified, always paired with a text label) ---------- */
-function diamond(inner){ return `<svg viewBox="0 0 100 100" aria-hidden="true"><rect x="18" y="18" width="64" height="64" transform="rotate(45 50 50)" fill="#fff" stroke="#D11F1F" stroke-width="7"/>${inner}</svg>`; }
-const ICON = {
-  flame: diamond(`<path d="M50 28c6 10 15 15 15 28a15 15 0 0 1-30 0c0-7 4-11 7-15 0 6 3 9 6 9-3-8 0-15 2-22z" fill="#111"/><rect x="33" y="70" width="34" height="4" fill="#111"/>`),
-  corrosion: diamond(`<path d="M30 40h14l-2 6h-10zM56 40h14l-2 6H58z" fill="#111"/><path d="M36 50l-2 8M62 50l-2 8" stroke="#111" stroke-width="3"/><rect x="28" y="62" width="18" height="5" fill="#111"/><path d="M54 64h18v6H54z" fill="#111"/><path d="M58 64l4-4 4 4" fill="#111"/>`),
-  exclaim: diamond(`<rect x="46" y="30" width="8" height="28" rx="3" fill="#111"/><circle cx="50" cy="66" r="5" fill="#111"/>`),
-  skull: diamond(`<circle cx="50" cy="44" r="12" fill="#111"/><rect x="43" y="52" width="14" height="8" rx="2" fill="#111"/><circle cx="45" cy="43" r="3" fill="#fff"/><circle cx="55" cy="43" r="3" fill="#fff"/><path d="M34 62l32 10M66 62L34 72" stroke="#111" stroke-width="4" stroke-linecap="round"/>`),
-  health: diamond(`<circle cx="50" cy="33" r="6" fill="#111"/><path d="M40 72V48c0-5 4-8 10-8s10 3 10 8v24z" fill="#111"/><path d="M50 50l-6 8 6 6 6-6z" fill="#fff"/>`),
-  oxidizer: diamond(`<circle cx="50" cy="60" r="9" fill="none" stroke="#111" stroke-width="5"/><path d="M50 26c5 8 11 12 11 21a11 11 0 0 1-22 0c0-5 3-8 5-11 0 4 2 6 4 6-2-6 0-11 2-16z" fill="#111"/><rect x="34" y="72" width="32" height="4" fill="#111"/>`)
+/* ================= GHS pictograms (simplified, always text-labeled) ================= */
+function dia(inner){ return '<svg viewBox="0 0 100 100" aria-hidden="true"><rect x="17" y="17" width="66" height="66" transform="rotate(45 50 50)" fill="#fff" stroke="#D11F1F" stroke-width="7" stroke-linejoin="round"/>'+inner+'</svg>'; }
+var GHS={
+  flame: dia('<path d="M50 27c7 11 16 16 16 29a16 16 0 0 1-32 0c0-8 4-12 7-16 0 6 3 10 7 10-3-8 0-16 2-23z" fill="#111"/><rect x="32" y="71" width="36" height="4" fill="#111"/>'),
+  oxidizer: dia('<circle cx="50" cy="61" r="10" fill="none" stroke="#111" stroke-width="5"/><path d="M50 25c5 8 12 12 12 21a12 12 0 0 1-24 0c0-5 3-8 5-11 0 4 2 6 4 6-2-6 1-11 3-16z" fill="#111"/><rect x="33" y="73" width="34" height="4" fill="#111"/>'),
+  explosive: dia('<circle cx="50" cy="58" r="10" fill="#111"/><path d="M50 24v14M30 34l9 10M70 34l-9 10M24 54h12M76 54H64" stroke="#111" stroke-width="4" stroke-linecap="round"/><rect x="33" y="72" width="34" height="4" fill="#111"/>'),
+  gas: dia('<rect x="30" y="44" width="40" height="18" rx="9" fill="#111"/><rect x="66" y="49" width="8" height="8" fill="#111"/>'),
+  corrosion: dia('<path d="M30 36h12l-2 6h-8zM56 36h12l-2 6H58z" fill="#111"/><path d="M36 46l-2 9M62 46l-2 9" stroke="#111" stroke-width="3"/><rect x="27" y="60" width="18" height="6" fill="#111"/><path d="M54 66h20v-4l-6-4-4 3-4-3-6 4z" fill="#111"/><rect x="30" y="72" width="40" height="4" fill="#111"/>'),
+  skull: dia('<circle cx="50" cy="42" r="12" fill="#111"/><rect x="43" y="50" width="14" height="8" rx="2" fill="#111"/><circle cx="45" cy="41" r="3" fill="#fff"/><circle cx="55" cy="41" r="3" fill="#fff"/><path d="M34 60l32 11M66 60L34 71" stroke="#111" stroke-width="4" stroke-linecap="round"/>'),
+  exclaim: dia('<rect x="46" y="28" width="8" height="29" rx="3" fill="#111"/><circle cx="50" cy="66" r="5" fill="#111"/>'),
+  health: dia('<circle cx="50" cy="31" r="6" fill="#111"/><path d="M39 74V47c0-5 5-8 11-8s11 3 11 8v27z" fill="#111"/><path d="M50 48l-7 9 7 7 7-7z" fill="#fff"/>'),
+  env: dia('<path d="M33 40l6 8M39 48v20M39 52l-7-4M39 56l7-5" stroke="#111" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M46 70c4-6 18-6 22 0-4 6-18 6-22 0z" fill="#111"/><path d="M44 66l4 4-4 4z" fill="#111"/><rect x="30" y="74" width="40" height="3" fill="#111"/>')
 };
 
-/* ---------- reusable activity: multiple choice ---------- */
-function mcq(cfg){
-  // cfg: {tag, q, opts:[{t, ok, fb}], onDone}
-  const box = el("div", {class:"act"});
-  box.innerHTML = `${cfg.tag?`<p class="act-tag">${cfg.tag}</p>`:""}<p class="q">${cfg.q}</p><div class="opts" role="group" aria-label="Answer choices"></div>`;
-  const wrap = $(".opts", box);
-  cfg.opts.forEach((o, i) => {
-    const b = el("button", {class:"opt", type:"button"}, `<span class="k" aria-hidden="true">${LETTERS[i]}</span><span>${o.t}</span>`);
-    b.addEventListener("click", () => {
-      $$(".opt", wrap).forEach(x => x.disabled = true);
-      b.classList.add(o.ok ? "right" : "wrong");
-      if(!o.ok){ const r = $$(".opt", wrap)[cfg.opts.findIndex(x=>x.ok)]; r.classList.add("right"); }
-      const fb = el("div", {class:"fb " + (o.ok?"ok":"no"), role:"status"}, `<b>${o.ok? (cfg.right||"That's the call.") : (cfg.wrong||"Not quite.")}</b>${o.fb||""}`);
-      box.appendChild(fb);
-      const again = el("button", {class:"btn ghost", type:"button", style:"margin-top:12px"}, "Try again");
-      if(!o.ok){ again.addEventListener("click", () => { const fresh = mcq(cfg); box.replaceWith(fresh); }); box.appendChild(again); }
-      cfg.onDone && cfg.onDone(o.ok);
-    });
-    wrap.appendChild(b);
+/* ================= course data ================= */
+var SECTIONS=[["INTRODUCTION",[1]],["BEFORE THE BENCH",[2,3,4,5]],["AT THE BENCH",[6,7]],["WRAP-UP",[8,9,10]]];
+var L={};
+function lesson(n,id,title,menu,why,mins,blocks){ L[n]={n:n,id:id,title:title,menu:menu||title,why:why,mins:mins,blocks:blocks}; }
+
+lesson(1,"why-this-isnt-a-rules-list","Why This Isn’t a Rules List",null,
+ "You’ll make dozens of small safety decisions in your first week. This course gives you practice making them now, when mistakes cost nothing.",3,[
+ {t:"p",html:"<b>Most lab safety training is a list of rules you read once and sign.</b> People skim, sign, and forget. Then, under pressure, they freeze."},
+ {t:"p",html:"This course works differently. Instead of memorizing rules, you’ll practice the decisions that keep you and your coworkers safe."},
+ {t:"img",src:"img/intro-beaker.jpg",text:"It’s your first week on the bench. A coworker’s beaker tips toward you. What do you do first?"},
+ {t:"selfcheck"},
+ {t:"path"},
+ {t:"note",text:"Seven moments. Seven decisions."},
+ {t:"numbered",items:[["Before you touch anything","Prepare before the work starts."],["Read the label","Know how a chemical can hurt you."],["Controls before gear","Know what protects you before PPE does."],["Dress for the lab","Wear the right gear the right way."],["Working safely","Handle chemicals, heat, glass, and storage."],["When something goes wrong","Know when to act and when to call."],["Clean exit","Leave the station and waste safe for the next person."]]},
+ {t:"img",src:"img/rights-team.jpg",text:"You have the right to a safe lab, and the right to speak up."},
+ {t:"p",html:"<b>California law requires every lab employer to have a written Chemical Hygiene Plan</b> and to train you before you work with hazardous chemicals. That plan also gives you rights."},
+ {t:"grid",title:"Your rights",items:[["Safety training","Before your first assignment, and again before any new chemical or procedure."],["Safety information","Access to the Chemical Hygiene Plan and every SDS, on every shift."],["Speak up safely","Report hazards and near misses without fear of retaliation."],["Medical care","A free medical consultation, with no loss of pay, after a spill, leak, or symptoms."]]},
+ {t:"match",band:true,tag:"Matching",title:"Who do I call?",sub:"Match each situation to the right contact.",pairs:[["Someone is seriously hurt or there’s a fire","911"],["You’re unsure an SOP covers a new step","Your supervisor"],["A spill of an unknown chemical","EH&S (Environmental Health & Safety)"],["A question about the Chemical Hygiene Plan","Chemical Hygiene Officer"]],fb:"Save these four contacts in your phone on day one."}
+]);
+
+lesson(2,"before-you-touch-anything","Before You Touch Anything",null,
+ "Most lab incidents start before anyone opens a bottle. A few minutes of prep protects your coworkers, your data, and your job.",3,[
+ {t:"p",html:"<b>Most lab accidents start before anyone touches a chemical:</b> a skipped step, a missing procedure, or a coworker who didn’t know about your allergy."},
+ {t:"note",text:"Preparation is the first safety step."},
+ {t:"numbered",items:[["Read the SOP","Read the full standard operating procedure before you start, not while you work."],["Confirm it’s approved","Use only approved chemicals and procedures. Anything not in the SOP needs your supervisor’s OK."],["Never work alone","Make sure someone else is in the lab before you begin."],["Clear your space","Personal items, food, and drinks stay out of the work area."],["Speak up about you","Tell your supervisor about allergies, asthma, contact lenses, or color blindness."]]},
+ {t:"callout",band:true,title:"Know your lab’s plan",lede:"Every lab employer in California is required to have one.",items:["Find your lab’s Chemical Hygiene Plan on day one, and read and sign it along with your lab’s SOPs.","Unattended runs need supervisor approval, a sign on the door, and lights left on.","Avoid working alone. If you must, skip any task with significant chemical or physical hazards."]},
+ {t:"scenario",band:true,name:"Priya",init:"P",color:"#7A6A9B",role:"Research associate, 3 years on the team",quote:"“We’re behind. Let’s triple the batch size today. Same reaction, just bigger.”",q:"What do you do?",opts:["Triple it. Priya knows the reaction well.","“Let’s get written approval from our supervisor first. Scaling up changes the hazards.”","Double it instead, as a compromise."],a:1,
+  fbs:["Experience doesn’t change the chemistry. Scaling up is a significant change that needs written approval first.","","A smaller scale-up is still a change to the procedure. It needs approval too."],
+  fb:"Scaling up a reaction is a significant change. It needs written approval before you start, because heat, pressure, and exposure all grow with scale."}
+]);
+
+lesson(3,"read-the-label","Read the Label",null,
+ "Labels and Safety Data Sheets tell you how a chemical can hurt you and what to do if it does. Reading them takes seconds and can prevent a trip to the clinic.",4,[
+ {t:"img",src:"img/label-bottles.jpg",text:"Every chemical tells you how it can hurt you. You just have to read it."},
+ {t:"p",html:"<b>Chemical labels follow the Globally Harmonized System (GHS).</b> Every label has the same six parts, so once you can read one, you can read them all."},
+ {t:"flash",title:"The 9 GHS pictograms",cards:[["flame","Flame","Flammable. Keep away from heat, sparks, and open flames."],["corrosion","Corrosion","Corrosive. Can burn skin and eyes, and damage metal."],["exclaim","Exclamation Mark","Irritant. May irritate skin, eyes, or airways."],["skull","Skull and Crossbones","Acutely toxic. Small amounts can kill."],["health","Health Hazard","Long-term harm, like cancer or organ damage."],["oxidizer","Flame Over Circle","Oxidizer. Feeds fires and can make them worse."],["explosive","Exploding Bomb","Explosive or self-reactive. Handle with extreme care."],["gas","Gas Cylinder","Gas under pressure. Can explode if heated."],["env","Environment","Toxic to aquatic life. Never pour down the drain."]],caption:"Click a card to flip it."},
+ {t:"note",text:"“Danger” means more severe. “Warning” means less severe."},
+ {t:"grid",band:true,title:"4 ways chemicals get in",items:[["Inhalation","Breathing fumes, vapors, or dust. The most common route in labs.","img/route-inhalation.jpg"],["Skin and eyes","Splashes and spills absorbed through skin or eyes.","img/route-skin-eyes.jpg"],["Ingestion","Eating, drinking, or touching your face after handling chemicals.","img/route-ingestion.jpg"],["Injection","Needle sticks, or cuts from contaminated glass.","img/route-injection.jpg"]]},
+ {t:"grid",title:"Your SDS shortcut",sub:"Every SDS has the same 16 sections. These four answer most on-the-job questions. Bring the SDS with you to the clinic after any exposure.",items:[["Section 2 · Hazards","What can hurt you, and how badly."],["Section 4 · First aid","What to do right after an exposure."],["Section 7 · Handling and storage","How to use it and where it lives."],["Section 8 · Exposure controls and PPE","What gear and ventilation you need."]]},
+ {t:"story",key:"labelDecoder"},
+ {t:"callout",band:true,title:"Label rules",items:["Label every container in English with the full chemical name. Formulas and acronyms like “IPA” don’t count.","Include the hazard, like “Flammable” or “Corrosive.”","Never remove or deface a manufacturer’s label.","Never pour unused chemicals back into the original bottle."]}
+]);
+
+lesson(4,"controls-before-gear","Controls Before Gear",null,
+ "Your lab coat and goggles are your last line of defense. Knowing what protects you before PPE helps you spot when a hood, a cabinet, or a procedure isn’t doing its job.",4,[
+ {t:"img",src:"img/controls-hero.jpg",text:"The best protection is the one that works even when you forget."},
+ {t:"p",html:"<b>Safety professionals rank protections by how well they work.</b> The most effective ones remove the hazard entirely. The least effective ones depend on you doing everything right, every time."},
+ {t:"hierarchy"},
+ {t:"note",text:"PPE is your last line of defense, not your first."},
+ {t:"match",band:true,tag:"Matching",title:"Match each example to its control.",sub:"Example task: rinsing glassware with a solvent.",pairs:[["Working inside a certified fume hood","Engineering control"],["Using a less toxic solvent","Substitution"],["Following the lab’s written SOP","Administrative control"],["Wearing butyl gloves","PPE"]],fb:"The higher the control, the less it depends on you remembering."},
+ {t:"h2",text:"Before you use a fume hood"},
+ {t:"numbered",items:[["Check the sticker","Certification must be dated within the last year. No sticker means don’t use it.","img/hood-1.jpg"],["Check the monitor","Confirm the airflow gauge or alarm shows normal before you start.","img/hood-2.jpg"],["Set the sash","Work at the marked 18-inch height. Higher sashes drop airflow below safe levels.","img/hood-3.jpg"],["Work 6 inches in","Keep materials at least 6 inches behind the sash.","img/hood-4.jpg"],["Keep it clear, close it after","Clutter blocks airflow. Never use a hood for storage, and close the sash when you’re done.","img/hood-5.jpg"]]},
+ {t:"story",key:"hoodCheck"}
+]);
+
+lesson(5,"dress-for-the-lab","Dress for the Lab",null,
+ "Your gear only protects you if it’s the right gear, worn the right way. This is the last thing standing between a splash and your skin.",4,[
+ {t:"p",html:"<b>Protective gear only works if you wear it correctly, every time.</b> Find the five problems with this new hire’s outfit."},
+ {t:"labeled",title:"Spot the Hazard",sub:"Click each marker to see what’s wrong.",img:"img/ppe-outfit.jpg",alt:"A smiling new lab technician standing in a lab in a lab coat, with no eye protection, loose hair, a necklace, long sleeves and sandals.",markers:[
+   [52.9,14.3,"No eye protection","Wear ANSI Z87.1 safety glasses, or splash goggles when liquids could splash. Prescription glasses don’t count."],
+   [43.5,28.2,"Loose hair","Long hair can catch in equipment or fall into chemicals and flames. Tie it back."],
+   [53.4,39.8,"Dangling necklace","Jewelry can dip into chemicals or catch on equipment. Take it off before you work."],
+   [41.5,62.1,"Coat sleeves past the wrist","Loose sleeves drag through spills. Use fitted cuffs, with gloves pulled over them."],
+   [53.4,88.6,"Open-toe sandals","Spills land on feet. Wear closed-toe shoes, plus full-length pants."]]},
+ {t:"callout",band:true,title:"Your lab kit",lede:"Required whenever you work with or near hazardous chemicals.",items:["ANSI Z87.1 safety glasses, or splash goggles for splash risks","Lab coat, flame-resistant when working with more than 1 L of flammables or open flames","Gloves matched to the chemical you’re using","Full-length pants and closed-toe shoes"]},
+ {t:"sort",band:true,title:"Lab Ready or Not?",sub:"Tap each card, then tap the right pile.",piles:["Lab Ready","Not Lab Ready"],cards:[["ANSI Z87.1 safety glasses",0,"Impact-rated with side shields. Ready."],["Prescription glasses only",1,"No side shields or impact rating. Wear goggles over them."],["Hair tied back",0,"Keeps hair away from flames and equipment."],["Shorts with a lab coat",1,"Your legs are exposed below the coat. Wear full-length pants."],["Butyl gloves for an acetone rinse",0,"Rated for acetone, so they hold up for the whole rinse."],["Disposable gloves reused all day",1,"Disposable gloves are single use. Swap them whenever they’re splashed or you take them off."]]},
+ {t:"mc",band:true,tag:"Knowledge check",q:"You’re about to rinse glassware with acetone for 10 minutes. Which gloves do you use?",opts:["Thin disposable nitrile gloves","Butyl gloves rated for acetone","Latex exam gloves","No gloves, since acetone evaporates fast"],a:1,fb:"Disposable gloves only protect against small splashes, for seconds. Soaking or rinsing needs a glove rated for that chemical. Check the glove compatibility chart."},
+ {t:"flash",title:"Myth or Fact?",myth:true,cards:[[null,"Prescription glasses count as eye protection.","Myth. They lack side shields and impact-rated lenses. Use Z87.1 safety glasses or over-the-glasses goggles."],[null,"I can wash my lab coat at home.","Myth. Contaminated coats go to your workplace’s lab laundry service, never home or a laundromat."],[null,"Checking my phone with gloves on is fine.","Myth. It spreads chemicals to your phone, your face, and home. Take gloves off first."]],caption:"Click a card to flip it."}
+]);
+
+lesson(6,"working-safely","Working Safely",null,
+ "These habits are what experienced techs do without thinking. Building them now keeps routine tasks from turning into incidents.",5,[
+ {t:"img",src:"img/working-safely.jpg",text:"Most injuries happen during routine work, not emergencies."},
+ {t:"p",html:"<b>Four kinds of hazards show up in almost every lab task.</b> Click each tab to see the habits that keep you safe."},
+ {t:"tabs",tabs:[["Chemicals",["Waft vapors toward you with your hand. Never sniff directly.","Use a pipette bulb or pump. Never use your mouth.","Pour acid into water, slowly, while stirring.","Carry chemicals around people, not through a crowd."]],["Heat",["Point test tubes away from people when heating.","Keep alcohol, acetone, and other flammables away from flames.","Turn burners off when they’re not in use."]],["Glass",["Check glassware for chips and cracks before you use it.","Test for heat by holding the back of your hand near the glass, not on it.","Never put hot glass in cold water."]],["Electrical",["Touch equipment with dry hands only.","Pull the plug, not the cord.","Report frayed cords right away."]]]},
+ {t:"note",text:"Acid into water. Never the reverse."},
+ {t:"scenario",band:true,name:"Marcus",init:"M",color:"#4E7A6B",role:"Senior lab technician",quote:"“I always add the water to the acid. It’s quicker, and I’ve never had a problem.”",q:"How do you speak up?",opts:["Say nothing. He’s been here longer than you.","“Can we pour the acid into the water instead? It’s safer that way.”","Walk away and mention it to other coworkers later."],a:1,
+  fbs:["Seniority doesn’t change the chemistry. Adding water to acid can boil and spatter acid onto both of you.","","Talking about him doesn’t fix the hazard. Raise it with him directly, or with your supervisor."],
+  fb:"Clear, respectful, and focused on the task, not the person."},
+ {t:"sort",band:true,title:"Store It Right",sub:"Tap each chemical, then tap its storage spot.",piles:["Corrosives cabinet (acids)","Corrosives cabinet (bases)","Flammables cabinet","Oxidizers shelf"],cards:[["Hydrochloric acid",0,"Acids go in the acid corrosives cabinet, below eye level, in secondary containment."],["Sodium hydroxide",1,"Bases are corrosive too, but they’re stored apart from acids."],["Acetone",2,"Flammable solvents live in the flammables cabinet, away from heat."],["Hydrogen peroxide",3,"Oxidizers feed fires, so they stay away from flammables."],["Nitric acid",0,"An acid, and also an oxidizer. Keep it away from organics."],["Ammonium hydroxide",1,"A base. Keep it separate from acids."],["Hexane",2,"Highly flammable. Flammables cabinet."],["Potassium permanganate",3,"A strong oxidizer. Keep it away from flammables and organics."]],rule:"Corrosives go below eye level, in secondary containment."},
+ {t:"callout",title:"Moving chemicals",items:["Carry bottles in a break-resistant carrier or a cart with a rail.","Never leave chemicals unattended in a hallway.","Gas cylinders go upright on a cylinder cart, with the cap on.","Don’t ride an elevator with a gas cylinder. Send it up and meet it."]}
+]);
+
+lesson(7,"when-something-goes-wrong","When Something Goes Wrong",null,
+ "Emergencies are rare, but you only get one first minute. Knowing when to act and when to call protects you and the people around you.",6,[
+ {t:"p",html:"<b>In an emergency, the first 60 seconds matter most.</b> If you already know where the safety equipment is, you won’t waste time looking for it."},
+ {t:"note",text:"Report everything. No matter how small."},
+ {t:"labeled",title:"Know Your Lab",sub:"Click each marker to find the safety equipment in this lab.",img:"img/lab-map.png",alt:"A top-down map of a lab showing benches, a center island, an eyewash station, a safety shower, a fire blanket, fire extinguishers, a first aid kit and the exit door.",markers:[
+   [20.1,27.4,"Eyewash station","You must be able to reach it in 10 seconds or less, through no more than one door. Keep 16 inches around it clear."],
+   [16.5,52.4,"Safety shower","For splashes bigger than your hands. Pull the handle, stay under it at least 15 minutes, and take off contaminated clothing."],
+   [19.4,15.9,"Fire blanket","For clothing fires. Wrap and smother the flames, or get to the safety shower."],
+   [8.1,47.8,"Fire extinguisher (ABC)","Only if the fire is trash-can size or smaller, you’re trained, and you have a clear exit behind you."],
+   [28.1,15.6,"First aid kit","For minor cuts and burns. Report every injury, even small ones."],
+   [76.4,29.3,"Exits","Know two ways out. Keep aisles at least 3 feet wide and exits clear."]]},
+ {t:"h2",text:"Splash response"},
+ {t:"numbered",items:[["Get to the eyewash or shower","Go right away. Ask a coworker to help guide you if you can’t see."],["Flush for at least 15 minutes","Keep water running the whole time. Remove contaminated clothing."],["Tell your supervisor","Report it, even if it feels minor."]]},
+ {t:"story",key:"cleanOrCall"},
+ {t:"mc",band:true,tag:"Knowledge check",q:"A small fire starts in a beaker of ethanol, about the size of a coffee mug. You haven’t had hands-on extinguisher training. What do you do?",opts:["Grab the extinguisher and put it out","Pour water on it","Pull the alarm, alert others, and evacuate","Carry the beaker to the sink"],a:2,fb:"Only use an extinguisher if the fire is trash-can size or smaller, you’re trained, it’s safe, and you choose to. Without training, alarm and evacuate. Never use water on a chemical fire."},
+ {t:"mc",band:true,tag:"Scenario",img:"img/old-ether.jpg",alt:"An old amber bottle with a faded label and white crystals crusted around the cap.",q:"Cleaning out a cabinet, you find this: an undated bottle of diethyl ether with white crystals around the cap. What do you do?",opts:["Open it carefully to check the level","Move it to the waste area right away","Don’t touch it. Restrict the area and call EH&S.","Rinse the crystals off the cap"],a:2,fb:"Ether can form shock-sensitive peroxide crystals over time. An old, undated, or crystallized bottle can explode if handled. Leave it, keep people away, and call."},
+ {t:"checklist",title:"After an exposure: what to bring to the clinic",items:["The chemical’s full name","A copy of its SDS","What happened, and for how long","Any symptoms you’re having"],done:"That’s everything the clinic needs to treat you fast."},
+ {t:"note",text:"A reported near miss is a win. It’s how the whole lab learns."},
+ {t:"accordion",title:"Other emergencies",items:[["Clothing on fire","Get to the safety shower. If it’s more than 3 steps away, stop, drop, and roll first."],["Broken glass","Never use bare hands. Use a brush and dustpan, then report it."],["Broken equipment","Stop, turn it off, and report it. Don’t try to fix it yourself."],["Earthquake","Take cover until shaking stops, then evacuate to your assembly point."]]},
+ {t:"story",key:"first60"}
+]);
+
+lesson(8,"clean-exit","Clean Exit",null,
+ "Waste mistakes cause some of the worst lab accidents, and they often hurt someone who wasn’t there. A clean exit protects the next person.",4,[
+ {t:"img",src:"img/clean-exit.jpg",text:"A clean exit protects the next person who uses your station."},
+ {t:"p",html:"<b>Waste goes in specific containers so it can be handled safely.</b> Putting it in the wrong bin can cause fires, cuts, or chemical reactions."},
+ {t:"wasteLabel"},
+ {t:"sort",band:true,title:"Which Container?",sub:"Tap each item, then tap the right waste container.",piles:["Lab glass box","Sharps container","Organic solvent waste","Acid waste (dedicated, vented)"],cards:[["Leftover nitric acid",3,"Acid waste, in its own vented container. Never add it to organic waste."],["Chipped beaker",0,"Clean broken or chipped glass goes in the lab glass box."],["Used needle",1,"Anything that can pierce skin goes in sharps."],["Acetone rinse",2,"Flammable solvent waste."],["Empty rinsed flask",0,"Rinsed glass that can’t be reused goes in the glass box."],["Razor blade",1,"Sharps container, every time."],["Hexane",2,"Organic solvent waste."],["Hydrochloric acid",3,"Acid waste, kept apart from organics."]]},
+ {t:"callout",title:"Hazardous waste rules",items:["Keep containers closed unless you’re adding waste.","Fill to no more than 80%, with secondary containment.","Label it the day you start, and ship it out within 270 days.","Nitric acid and other oxidizing waste get vented caps."]},
+ {t:"checklist",band:true,title:"Before you leave",items:["Waste containers closed, labeled, and under 80% full","Station wiped down with soap and water","Clean equipment returned to storage","Chemicals stay in the lab, and the hood sash is closed","Gloves off and hands washed with soap"],done:"Station’s safe for the next person."}
+]);
+
+lesson(9,"final-check","Final Check",null,null,0,[
+ {t:"p",html:"<b>Eight questions, all real lab situations. Score 80% or higher to finish.</b> If you miss a question, you’ll get a link back to that lesson."},
+ {t:"p",html:"<b>There’s no time limit, and every question works with a keyboard or screen reader.</b>"},
+ {t:"final"},
+ {t:"reflect"}
+]);
+
+lesson(10,"lab-ready-card","Your Lab Ready Card","Lab Ready Card (Job Aid)",null,0,[
+ {t:"p",html:"<b>Print this card and keep it at your station.</b> It covers the four things you’ll need most when you’re actually at the bench."},
+ {t:"card"},
+ {t:"weekly"},
+ {t:"callout",band:true,title:"Stay Lab Ready",lede:"Training doesn’t end today.",items:["Before any new chemical or procedure: a 3-minute targeted refresher.","At 30 days: your supervisor observes one task using the same checklist.","Every 3 years: a 10-minute “Lab Ready Refresh” scenario set."]},
+ {t:"rate"}
+]);
+
+var ORDER=[1,2,3,4,5,6,7,8,9,10];
+function byId(id){ for(var i=0;i<ORDER.length;i++){ if(L[ORDER[i]].id===id) return L[ORDER[i]]; } return null; }
+
+/* ================= block renderers ================= */
+var R={};
+R.p=function(b){ return wrap("tight",'<p class="say">'+b.html+'</p>'); };
+R.h2=function(b){ return wrap("",'<h2 class="bt">'+b.text+'</h2>'); };
+R.img=function(b){ var s=h("section",{class:"photo-text",style:"background-image:url('"+b.src+"')",role:"img","aria-label":b.text}); s.innerHTML='<div class="in"><p class="say">'+b.text+'</p></div>'; return s; };
+R.note=function(b){ return wrap("note",'<p class="say">'+b.text+'</p>'); };
+R.numbered=function(b){
+  var d=h("div",{class:"numbered"});
+  b.items.forEach(function(it,i){ var r=h("div",{class:"num-row"}); r.innerHTML='<div class="dv" aria-hidden="true"><span>'+(i+1)+'</span></div>';
+    var c=h("div",{class:"card ncard"+(it[2]?" has-img":"")}); c.innerHTML=(it[2]?'<img src="'+it[2]+'" alt="" loading="lazy">':'')+'<div><h3><span class="sr">Step '+(i+1)+': </span>'+it[0]+'</h3><p class="say">'+it[1]+'</p></div>'; r.appendChild(c); d.appendChild(r); });
+  return wrap("",d);
+};
+R.grid=function(b){
+  var d=h("div"); d.innerHTML='<h2 class="bt">'+b.title+'</h2>'+(b.sub?'<p class="say" style="font-size:15.5px">'+b.sub+'</p>':'');
+  var g=h("div",{class:"grid"}); b.items.forEach(function(it){ g.appendChild(h("div",{class:"card gcard"},(it[2]?'<img src="'+it[2]+'" alt="" loading="lazy">':'')+'<h3>'+it[0]+'</h3><p class="say">'+it[1]+'</p>')); });
+  d.appendChild(g); return wrap(b.band?"band":"",d);
+};
+R.callout=function(b){ return wrap(b.band?"band":"",'<div class="card callout"><h3>'+b.title+'</h3>'+(b.lede?'<p class="lede">'+b.lede+'</p>':'')+'<ul>'+b.items.map(function(x){return '<li class="say">'+x+'</li>';}).join("")+'</ul></div>'); };
+
+function mcBox(cfg, onDone){
+  // Rise-style: select, then SUBMIT
+  var box=h("div",{class:"card kc"});
+  box.innerHTML=(cfg.tag?'<p class="tag">'+cfg.tag+'</p>':'')+(cfg.img?'<img src="'+cfg.img+'" alt="'+(cfg.alt||"")+'" style="width:100%;border-radius:2px;margin:4px 0 18px">':'')+'<p class="q">'+cfg.q+'</p><div role="radiogroup" aria-label="Answer choices"></div><button class="btn" type="button" disabled>Submit</button>';
+  var g=$("[role=radiogroup]",box), sub=$(".btn",box), pick=-1;
+  var order=cfg.keepOrder?cfg.opts.map(function(_,i){return i;}):cfg.opts.map(function(_,i){return i;});
+  order.forEach(function(i){ var o=h("button",{class:"opt",type:"button",role:"radio","aria-checked":"false"},'<span class="r" aria-hidden="true"></span><span>'+cfg.opts[i]+'</span>'); o.dataset.i=i;
+    o.addEventListener("click",function(){ $$(".opt",g).forEach(function(x){x.classList.remove("sel");x.setAttribute("aria-checked","false");}); o.classList.add("sel"); o.setAttribute("aria-checked","true"); pick=i; sub.disabled=false; });
+    g.appendChild(o); });
+  sub.addEventListener("click",function(){
+    var ok=pick===cfg.a; $$(".opt",g).forEach(function(x){ x.disabled=true; x.classList.remove("sel"); if(+x.dataset.i===cfg.a) x.classList.add("right"); else if(+x.dataset.i===pick) x.classList.add("wrong"); });
+    sub.remove();
+    var extra=(!ok && cfg.fbs && cfg.fbs[pick])?cfg.fbs[pick]+" ":"";
+    box.appendChild(h("div",{class:"fb "+(ok?"ok":"no"),role:"status"},'<b>'+(ok?"Correct.":"Not quite.")+'</b>'+extra+(cfg.fb||"")));
+    if(!ok && !cfg.noRetry){ var tr=h("button",{class:"btn ghost",type:"button"},"Try again"); tr.addEventListener("click",function(){ box.replaceWith(mcBox(cfg,onDone)); }); box.appendChild(tr); }
+    if(onDone) onDone(ok,box);
   });
   return box;
 }
-
-/* ---------- lessons ---------- */
-const L = [];
-
-/* 0 Welcome */
-L.push({ id:"welcome", title:"Welcome to Lab Ready", short:"Welcome", render(m){
-  m.innerHTML = `
-  <p class="count">Start here</p>
-  <h1>Welcome to Lab Ready</h1><div class="rule"></div>
-  <div class="hero"><img src="../../assets/img/labready-hero.jpg" alt="A lab technician working carefully at a lab bench"><p>Safety isn't a list you sign. It's seven decisions you make at the bench.</p></div>
-  <p class="lead say">Most safety training hands you pages of rules and asks for a signature. Then a beaker tips, a hood alarm goes off, or a coworker cuts a corner, and the rules don't tell you what to do.</p>
-  <p class="say">This course is built around the moments new lab technicians actually face. Each lesson takes about five minutes: why it matters on the job, one decision, and practice right away.</p>
-  <h2>What you'll practice</h2>
-  <ol class="outline">
-    <li>Get ready before you start</li><li>Read the label and the SDS</li><li>Choose controls before gear</li><li>Check the fume hood</li><li>Clean it or call it?</li><li>The first 60 seconds</li><li>Waste and leaving it safe</li>
-  </ol>
-  <h2>Choose your path</h2>
-  <p class="say">New to lab work? Take the guided path. Already worked in a lab? Test out: pass the final check with 80% or higher and you're done.</p>
-  <div class="paths">
-    <button class="path" type="button" data-go="1"><b>Guided path →</b>All seven lessons, in order. About 35 minutes.</button>
-    <button class="path" type="button" data-go="8"><b>Test out →</b>Go straight to the final check. No time limit.</button>
-  </div>
-  <p class="note">Every lesson has a Listen button that reads the lesson aloud, and every activity works with a tap, a click or a keyboard. Your progress is saved on this device.</p>`;
-  $$("[data-go]", m).forEach(b => b.addEventListener("click", () => go(+b.dataset.go)));
-  return true;
-}});
-
-/* 1 Before you start */
-L.push({ id:"before", title:"Get Ready Before You Start", short:"Before you start", why:"Most lab accidents start before anyone touches a chemical: the wrong procedure, the wrong gear, or working alone when something goes wrong.", render(m){
-  m.innerHTML = head(1, this) + `
-  <p class="say"><b>Before every task, you make one decision: am I ready to start?</b> Ready means four things are true.</p>
-  <ul class="tidy say">
-    <li><b>You've read the SOP</b> (standard operating procedure) for this task, and you know where the SDS is.</li>
-    <li><b>You're using approved chemicals only</b>, in the amounts the procedure calls for.</li>
-    <li><b>Someone else is nearby.</b> Never work alone with hazardous chemicals.</li>
-    <li><b>Your gear is on:</b> splash goggles, a lab coat, long pants and closed-toe shoes.</li>
-  </ul>
-  <p class="callout">If any one of these isn't true, the answer is "not yet."</p>`;
-  m.appendChild(mcq({ tag:"Practice", q:"It's 6:40 p.m. Everyone else has gone home. Your task only takes ten minutes, you've read the SOP, and your goggles and lab coat are on. What do you do?",
-    opts:[
-      {t:"Start. It's a short task and you're geared up.", ok:false, fb:"Short tasks still go wrong. If you're splashed or overcome by fumes, no one is there to help or call for help."},
-      {t:"Wait until a coworker is in the lab, or ask your supervisor for a plan.", ok:true, fb:"Never work alone with hazardous chemicals. Ready means all four checks, including someone nearby."},
-      {t:"Start, but keep your phone in your pocket in case you need to call.", ok:false, fb:"If you're hurt, you may not be able to call. Someone nearby is the check you can't replace."}
-    ], onDone:ok=>ok&&complete(1)}));
-  return false;
-}});
-
-/* 2 Read the label */
-L.push({ id:"label", title:"Read the Label and the SDS", short:"Read the label", why:"Every chemical tells you how it can hurt you before you open it. Reading the label takes ten seconds and tells you what gear, controls and first aid you'll need.", render(m){
-  m.innerHTML = head(2, this) + `
-  <p class="say"><b>Before you use any chemical, name its hazards.</b> The label gives you the quick version. The Safety Data Sheet, or SDS, gives you the full one. You might still hear "MSDS"; that's the old name for the same document.</p>
-  <h2>Two signal words</h2>
-  <ul class="tidy say"><li><b>Danger</b> means the more severe hazards.</li><li><b>Warning</b> means less severe hazards.</li></ul>
-  <h2>Pictograms show the type of hazard</h2>
-  <div class="ghs">
-    <figure>${ICON.flame}<b>Flame</b>Flammable</figure>
-    <figure>${ICON.corrosion}<b>Corrosion</b>Burns skin and eyes, eats metal</figure>
-    <figure>${ICON.skull}<b>Skull and crossbones</b>Acutely toxic, can kill</figure>
-    <figure>${ICON.health}<b>Health hazard</b>Long-term harm, like cancer</figure>
-    <figure>${ICON.exclaim}<b>Exclamation mark</b>Irritant, less severe</figure>
-    <figure>${ICON.oxidizer}<b>Flame over circle</b>Oxidizer, feeds fires</figure>
-  </div>
-  <p class="note">Each pictogram is a black symbol in a red diamond. In this course, every one also has a text label, so color is never the only cue.</p>
-  <h2>Where to look in the SDS</h2>
-  <ul class="tidy say"><li><b>Section 2:</b> the hazards</li><li><b>Section 4:</b> first aid</li><li><b>Section 7:</b> handling and storage</li><li><b>Section 8:</b> exposure controls and protective gear</li></ul>
-  <h2>Read this label</h2>
-  <div class="label-card" role="img" aria-label="Chemical label for acetone: signal word Danger, flame and exclamation mark pictograms, hazard statements: highly flammable liquid and vapor, causes serious eye irritation, may cause drowsiness or dizziness.">
-    <div class="nm">Acetone</div>
-    <div class="sig">DANGER</div>
-    <div class="picts">${ICON.flame}${ICON.exclaim}</div>
-    <div>Highly flammable liquid and vapor. Causes serious eye irritation. May cause drowsiness or dizziness.</div>
-    <div class="note" style="margin-top:6px">Keep away from heat, sparks and open flames.</div>
-  </div>`;
-  let n=0; const need=2; const mark=()=>{ if(++n>=need) complete(2); };
-  m.appendChild(mcq({ tag:"Practice 1 of 2", q:"What does the signal word on this label tell you?", opts:[
-    {t:"Acetone has at least one severe hazard.", ok:true, fb:"\"Danger\" is the stronger of the two signal words. Here, it's because the liquid and its vapor catch fire easily."},
-    {t:"Acetone is mildly hazardous.", ok:false, fb:"That would be \"Warning.\" \"Danger\" marks the more severe hazards."},
-    {t:"Acetone is toxic if swallowed.", ok:false, fb:"The signal word tells you severity, not the type of hazard. The pictograms and hazard statements tell you the type."}
-  ], onDone:ok=>ok&&mark()}));
-  m.appendChild(mcq({ tag:"Practice 2 of 2", q:"A coworker gets acetone in her eye. Where in the SDS do you find the first aid steps?", opts:[
-    {t:"Section 2", ok:false, fb:"Section 2 lists the hazards. First aid is in Section 4."},
-    {t:"Section 4", ok:true, fb:"Section 4 is first aid. Find it before you need it, not during the emergency."},
-    {t:"Section 8", ok:false, fb:"Section 8 covers exposure controls and protective gear. First aid is Section 4."}
-  ], onDone:ok=>ok&&mark()}));
-  return false;
-}});
-
-/* 3 Controls before gear */
-L.push({ id:"controls", title:"Choose Controls Before Gear", short:"Controls before gear", why:"Your lab coat and goggles are your last line of defense. Knowing what protects you before PPE helps you spot when a hood, a cabinet or a procedure isn't doing its job.", render(m){
-  m.innerHTML = head(3, this) + `
-  <p class="say"><b>Safety professionals rank protections by how well they work.</b> The most effective ones remove the hazard. The least effective ones depend on you doing everything right, every time.</p>
-  <p class="pyr-cap">Most effective</p>
-  <div class="pyr" role="img" aria-label="The hierarchy of controls, from most to least effective: elimination, substitution, engineering controls, administrative controls, PPE.">
-    <div style="width:100%;background:#C2410C;color:#fff"><b>Elimination</b>Remove the hazard completely</div>
-    <div style="width:90%;background:#D4704A;color:#fff"><b>Substitution</b>Swap in something less hazardous</div>
-    <div style="width:80%;background:#E3A07F"><b>Engineering controls</b>Fume hoods, flammable cabinets, ventilation</div>
-    <div style="width:70%;background:#EEC6B1"><b>Administrative controls</b>SOPs, training, signs, approvals</div>
-    <div style="width:60%;background:#F6E1D6"><b>PPE</b>Goggles, gloves, lab coat</div>
-  </div>
-  <p class="pyr-cap">Least effective</p>
-  <p class="callout">PPE is your last line of defense, not your first.</p>`;
-  // ordering activity
-  const items = ["Elimination","Substitution","Engineering controls","Administrative controls","PPE"];
-  const shuffled = ["PPE","Engineering controls","Elimination","Administrative controls","Substitution"];
-  const box = el("div",{class:"act"});
-  box.innerHTML = `<p class="act-tag">Practice 1 of 2</p><p class="q">Put the controls in order, from most to least effective. Tap a control to place it in the next open spot.</p><div class="slots"></div><div class="pool" role="group" aria-label="Controls to place"></div><div class="row" style="margin-top:14px"><button class="btn" type="button" data-check disabled>Check my order</button><button class="btn ghost" type="button" data-reset>Start over</button></div>`;
-  const slots=$(".slots",box), pool=$(".pool",box); let placed=[];
-  function draw(){
-    slots.innerHTML=""; pool.innerHTML="";
-    for(let i=0;i<5;i++){ const s=el("div",{class:"slot"+(placed[i]?" filled":"")}, `<span class="n">${i+1}</span>${placed[i]||"Open spot"}`); slots.appendChild(s); }
-    shuffled.filter(x=>!placed.includes(x)).forEach(x=>{ const b=el("button",{type:"button"},x); b.addEventListener("click",()=>{placed.push(x); draw();}); pool.appendChild(b); });
-    $("[data-check]",box).disabled = placed.length<5;
-  }
-  $("[data-reset]",box).addEventListener("click",()=>{placed=[]; $$(".fb",box).forEach(f=>f.remove()); draw();});
-  $("[data-check]",box).addEventListener("click",()=>{
-    let right=0; $$(".slot",slots).forEach((s,i)=>{ const ok=placed[i]===items[i]; if(ok) right++; s.classList.add(ok?"right":"wrong"); });
-    $$(".fb",box).forEach(f=>f.remove());
-    const ok = right===5;
-    box.appendChild(el("div",{class:"fb "+(ok?"ok":"no"),role:"status"}, ok?`<b>All five in order.</b>Remove it, swap it, contain it, manage it, then wear it.`:`<b>${right} of 5 in the right spot.</b>Remember: the more a control depends on people doing everything right, the lower it ranks. Tap "Start over" to try again.`));
-    if(ok) mark();
-  });
-  draw(); m.appendChild(box);
-  let n=0; const mark=()=>{ if(++n>=2) complete(3); };
-  m.appendChild(mcq({ tag:"Practice 2 of 2", q:"You'll pour about 500 mL of acetone inside the fume hood. Your lab stocks thin nitrile gloves. What's the right move on gloves?", opts:[
-    {t:"Nitrile gloves are fine for any chemical.", ok:false, fb:"No single glove protects against everything. Acetone gets through thin nitrile quickly."},
-    {t:"Check the SDS and the glove compatibility chart, and use a glove rated for acetone, like butyl rubber.", ok:true, fb:"Section 8 of the SDS and the manufacturer's chart tell you which glove holds up. For acetone, butyl rubber lasts far longer than thin nitrile, which is only for brief splashes."},
-    {t:"Skip gloves, since you're working in the hood.", ok:false, fb:"The hood protects you from vapor, not from splashes on your hands. You need both."}
-  ], onDone:ok=>ok&&mark()}));
-  return false;
-}});
-
-/* 4 Hood check */
-L.push({ id:"hood", title:"Check the Fume Hood", short:"Hood check", why:"A fume hood only protects you when it's set up right. A raised sash, a blocked baffle or an alarm you ignore can pull fumes into your face instead of away from it.", render(m){
-  m.innerHTML = head(4, this) + `
-  <p class="say"><b>Before you work in a hood, check four things.</b></p>
-  <ul class="tidy say">
-    <li><b>Airflow:</b> the monitor reads normal, with no alarm.</li>
-    <li><b>Sash:</b> at or below the marked working height.</li>
-    <li><b>Baffles clear:</b> nothing blocking the slots at the back.</li>
-    <li><b>Six inches in:</b> work and containers at least six inches inside the front edge.</li>
-  </ul>
-  <div class="act" id="hoodAct">
-    <p class="act-tag">Practice: Hood check</p>
-    <p class="q">Someone set up this hood before you got here. Find the four problems. Tap each numbered spot to inspect it.</p>
-    <p class="score" id="hoodScore">0 of 4 problems found</p>
-    <div class="scene">
-      <svg viewBox="0 0 640 420" role="group" aria-label="A fume hood with six numbered spots to inspect">
-        <rect x="70" y="30" width="500" height="360" rx="10" fill="#D8DEE3" stroke="#9AA5AE" stroke-width="3"/>
-        <rect x="100" y="70" width="440" height="270" fill="#F4F6F7" stroke="#B7C0C7" stroke-width="2"/>
-        <g fill="#C9D1D7"><rect x="120" y="90" width="400" height="10"/><rect x="120" y="190" width="400" height="10"/><rect x="120" y="290" width="400" height="10"/></g>
-        <rect x="100" y="70" width="440" height="80" fill="#BFD4E3" opacity=".55" stroke="#7FA2BB" stroke-width="3"/>
-        <line x1="88" y1="225" x2="112" y2="225" stroke="#C2410C" stroke-width="4"/>
-        <text x="38" y="229" font-size="12" fill="#C2410C" font-weight="700" font-family="Roboto, sans-serif">MAX</text>
-        <rect x="100" y="340" width="440" height="16" fill="#9AA5AE"/>
-        <g><rect x="150" y="230" width="34" height="62" rx="4" fill="#8FB8D8"/><rect x="190" y="220" width="30" height="72" rx="4" fill="#D9A66B"/><rect x="226" y="236" width="30" height="56" rx="4" fill="#A3C99A"/><rect x="262" y="226" width="28" height="66" rx="4" fill="#C9A2D8"/></g>
-        <rect x="390" y="262" width="110" height="28" rx="4" fill="#5B6168"/><rect x="400" y="256" width="90" height="8" rx="2" fill="#7B838B"/>
-        <path d="M430 256 L438 226 V212 H452 V226 L460 256 Z" fill="#CFE6F5" stroke="#7FA2BB" stroke-width="2"/>
-        <path d="M300 340 V312 H330 V340 Z" fill="#F5D0B5" stroke="#C2410C" stroke-width="2"/><rect x="300" y="326" width="30" height="14" fill="#E9A47C" opacity=".7"/>
-        <rect x="586" y="80" width="40" height="70" rx="6" fill="#2B2F33"/><circle cx="606" cy="104" r="10" fill="#E5484D"/><text x="595" y="138" font-size="11" fill="#fff" font-family="Roboto, sans-serif">LOW</text>
-        <rect x="586" y="200" width="40" height="46" rx="4" fill="#fff" stroke="#9AA5AE"/><text x="590" y="218" font-size="9" fill="#1F2328" font-family="Roboto, sans-serif">CERT.</text><text x="590" y="232" font-size="9" fill="#1F2328" font-family="Roboto, sans-serif">MAR 26</text>
-      </svg>
-    </div>
-    <ul class="found-list" id="hoodList"></ul>
-  </div>`;
-  const spots = [
-    {x:140,y:150,p:true, label:"Sash", fb:"<b>Problem: the sash is above the MAX line.</b> A raised sash weakens the airflow, so fumes can escape toward you. Lower it to the marked height or below."},
-    {x:220,y:212,p:true, label:"Bottles at the back", fb:"<b>Problem: bottles are blocking the baffles.</b> The slots at the back pull vapor out. Store chemicals in a cabinet, not the hood, and keep the back clear."},
-    {x:606,y:62,p:true, label:"Airflow monitor", fb:"<b>Problem: the airflow monitor shows a low-flow alarm.</b> Don't start. Close the sash, tell your supervisor and use another hood."},
-    {x:315,y:292,p:true, label:"Beaker at the front", fb:"<b>Problem: the beaker sits right at the front edge.</b> Work at least six inches inside the hood so vapor gets pulled away from you."},
-    {x:606,y:186,p:false, label:"Certification sticker", fb:"<b>This one's fine.</b> The hood was certified in March 2026. Hoods are tested at least once a year, so this is current."},
-    {x:445,y:194,p:false, label:"Hot plate setup", fb:"<b>This one's fine.</b> The hot plate and flask are well inside the hood, on a level surface."}
+R.mc=function(b){ return wrap(b.band?"band":"",mcBox(b)); };
+R.scenario=function(b){
+  var box=mcBox({tag:"Scenario",q:b.q,opts:b.opts,a:b.a,fb:b.fb,fbs:b.fbs});
+  var who=h("div",{class:"who"},'<div class="av" style="background:'+b.color+'" aria-hidden="true">'+b.init+'</div><div class="meta"><b>'+b.name+'</b><small>'+b.role+'</small><div class="bubble">'+b.quote+'</div></div>');
+  box.insertBefore(who,$(".q",box)); return wrap("band",box);
+};
+R.selfcheck=function(){
+  var Q=[
+    {q:"A coworker’s beaker of dilute acid tips and splashes your forearm. What’s your first move?",opts:["Wipe it off with a paper towel","Rinse it under running water right away","Finish your step, then tell your supervisor","Neutralize it with baking soda"],a:1,fb:"Rinse first. Every second the acid stays on your skin, it keeps working. Then tell your supervisor."},
+    {q:"A bottle’s label says “Danger.” Another says “Warning.” What’s the difference?",opts:["They mean the same thing","“Danger” marks more severe hazards","“Warning” marks more severe hazards","“Danger” only appears on flammables"],a:1,fb:"“Danger” is the stronger signal word. “Warning” means the hazards are less severe."},
+    {q:"A liter of acetone spills next to a hot plate that’s on. What do you do?",opts:["Wipe it up quickly with paper towels","Turn up the ventilation and keep working","Warn others, leave the area, and call EH&S","Cover it with your lab coat"],a:2,fb:"A large flammable spill near an ignition source is a call, not a cleanup."}
   ];
-  const svg=$("svg",m), list=$("#hoodList",m); let found=0;
-  spots.forEach((s,i)=>{
-    const g=document.createElementNS("http://www.w3.org/2000/svg","g");
-    g.setAttribute("class","hs"); g.setAttribute("tabindex","0"); g.setAttribute("role","button"); g.setAttribute("aria-label",`Spot ${i+1}: ${s.label}`);
-    g.innerHTML=`<circle class="ring" cx="${s.x}" cy="${s.y}" r="17"/><text x="${s.x}" y="${s.y+5}" text-anchor="middle">${i+1}</text>`;
-    const act=()=>{ if(g.dataset.seen) return; g.dataset.seen=1; g.classList.add(s.p?"found":"fine");
-      list.appendChild(el("li",{class:s.p?"p":"f"}, `<b>${i+1}.</b> ${s.fb}`));
-      if(s.p){ found++; $("#hoodScore",m).textContent=`${found} of 4 problems found`; if(found===4){ list.appendChild(el("li",{class:"p",role:"status"},"<b>Hood check complete.</b> Airflow, sash, baffles, six inches in: check all four, every time.")); complete(4);} } };
-    g.addEventListener("click",act); g.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); act(); } });
-    svg.appendChild(g);
+  var holder=h("div"); var i=0, right=0;
+  function next(){
+    holder.innerHTML=""; var q=Q[i];
+    var box=mcBox({tag:"Quick self-check · "+(i+1)+" of 3",q:q.q,opts:q.opts,a:q.a,fb:q.fb,noRetry:true},function(ok,bx){ if(ok) right++; var nb=h("button",{class:"btn",type:"button"}, i<2?"Next question":"See my result"); nb.addEventListener("click",function(){ i++; if(i<3) next(); else done(); }); bx.appendChild(nb); });
+    holder.appendChild(box);
+  }
+  function done(){
+    var pass=right===3; if(pass){ S.testedOut=1; save(); }
+    holder.innerHTML='<div class="card kc"><p class="tag">Quick self-check</p><p class="q">'+right+' of 3 correct.</p><div class="fb '+(pass?"ok":"info")+'" role="status">'+(pass?"<b>You tested out.</b>Every lesson is open to you. Take the ones you want, or jump straight to the Final Check.":"<b>Good start.</b>Take the lessons in order. Each one gives you practice right away.")+'</div><div style="margin-top:6px">'+(pass?'<button class="btn" type="button" data-go="final-check">Go to the Final Check</button> ':'')+'<button class="btn ghost" type="button" data-again>Retake the self-check</button></div></div>';
+    $("[data-again]",holder).addEventListener("click",function(){ i=0; right=0; next(); });
+    var g=$("[data-go]",holder); if(g) g.addEventListener("click",function(){ go("final-check"); });
+  }
+  next(); return wrap("band",holder);
+};
+R.path=function(){
+  var d=h("div"); d.innerHTML='<h2 class="bt">Choose your path</h2><div class="paths"><button class="card pcard" type="button" data-p="new"><h3>New to lab work</h3><p>Take every lesson in order. About 30 minutes, with practice in each lesson.</p><span class="go">Start lesson 2 →</span></button><button class="card pcard" type="button" data-p="exp"><h3>Experienced in labs</h3><p>Ace the 3-question self-check to unlock any lesson. Most experienced techs finish in about 12 minutes.</p><span class="go">Jump to the Final Check →</span></button></div>';
+  $("[data-p=new]",d).addEventListener("click",function(){ complete(1); go(L[2].id); });
+  $("[data-p=exp]",d).addEventListener("click",function(){ complete(1); go("final-check"); });
+  return wrap("band",d);
+};
+R.match=function(b){
+  var box=h("div",{class:"card kc"}); var opts=shuffle(b.pairs.map(function(p){return p[1];}));
+  box.innerHTML='<p class="tag">'+b.tag+'</p><p class="q">'+b.title+'</p><p class="hint">'+b.sub+' Pick the match for each one.</p>';
+  b.pairs.forEach(function(p,i){ var r=h("div",{class:"mrow"}); var id="m"+Math.random().toString(36).slice(2,8);
+    r.innerHTML='<label class="l" for="'+id+'">'+p[0]+'</label><span class="ar" aria-hidden="true">→</span><select id="'+id+'"><option value="">Choose…</option>'+opts.map(function(o){return '<option>'+o.replace(/&/g,"&amp;")+'</option>';}).join("")+'</select>'; box.appendChild(r); });
+  var sub=h("button",{class:"btn",type:"button"},"Submit"); box.appendChild(sub);
+  sub.addEventListener("click",function(){ var right=0; $$(".mrow",box).forEach(function(r,i){ var v=$("select",r).value; var ok=v===b.pairs[i][1]; r.classList.remove("right","wrong"); r.classList.add(ok?"right":"wrong"); if(ok) right++; });
+    $$(".fb",box).forEach(function(f){f.remove();}); var all=right===b.pairs.length;
+    box.appendChild(h("div",{class:"fb "+(all?"ok":"no"),role:"status"},"<b>"+right+" of "+b.pairs.length+" matched.</b>"+(all?(b.fb||""):"Green is right. Change the red ones and submit again."))); });
+  return wrap("band",box);
+};
+R.flash=function(b){
+  var d=h("div"); d.innerHTML='<h2 class="bt">'+b.title+'</h2>'; var g=h("div",{class:"flash"});
+  b.cards.forEach(function(c){ var f=h("button",{class:"fc",type:"button","aria-pressed":"false"});
+    var front=b.myth?'<span class="mf">MYTH OR FACT?</span><span class="ft">'+c[1]+'</span>':GHS[c[0]]+'<span class="ft">'+c[1]+'</span>';
+    f.innerHTML='<span class="inner"><span class="face">'+front+'</span><span class="face back"><span class="bt2">'+c[2]+'</span></span></span>';
+    f.setAttribute("aria-label",(b.myth?"Myth or fact: ":"")+c[1]+". Tap to flip.");
+    f.addEventListener("click",function(){ var on=f.classList.toggle("flip"); f.setAttribute("aria-pressed",String(on)); f.setAttribute("aria-label",on?c[1]+": "+c[2]:(b.myth?"Myth or fact: ":"")+c[1]+". Tap to flip."); });
+    g.appendChild(f); });
+  d.appendChild(g); d.appendChild(h("p",{class:"caption"},b.caption)); return wrap("",d);
+};
+R.hierarchy=function(){
+  var tiers=[["Elimination","Remove the hazard completely","#C2400D","#fff",100],["Substitution","Swap in something less hazardous","#D4704A","#fff",88],["Engineering controls","Fume hoods, flammable cabinets, ventilation","#E2A283","#2B2B2B",76],["Administrative controls","SOPs, training, signage, approvals","#EECAB8","#2B2B2B",64],["PPE","Goggles, gloves, lab coat","#F6E3D9","#2B2B2B",52]];
+  var html='<h2 class="bt">The Hierarchy of Controls</h2><p class="caption" style="margin:0 0 8px;letter-spacing:.1em;font-size:11px">MOST EFFECTIVE</p><div role="img" aria-label="An inverted pyramid of five tiers, from most effective at the top (elimination) to least effective at the bottom (PPE)." style="display:grid;gap:10px;justify-items:center">';
+  tiers.forEach(function(t){ html+='<div style="width:'+t[4]+'%;background:'+t[2]+';color:'+t[3]+';text-align:center;padding:10px 8px;border-radius:2px;font:400 13px/1.35 var(--sans)"><b style="display:block;font-size:15px">'+t[0]+'</b>'+t[1]+'</div>'; });
+  html+='</div><p class="caption" style="margin:8px 0 0;letter-spacing:.1em;font-size:11px">LEAST EFFECTIVE</p>';
+  return wrap("",html);
+};
+R.labeled=function(b){
+  var d=h("div"); d.innerHTML='<h2 class="bt">'+b.title+'</h2><p class="sub" style="margin-top:-14px">'+b.sub+'</p><p class="counter" aria-live="polite">0 of '+b.markers.length+' explored</p>';
+  var st=h("div",{class:"stage"}); st.innerHTML='<img src="'+b.img+'" alt="'+b.alt+'">'; var pop=h("div",{class:"pop probe",role:"status"},'Tap a numbered marker to start.');
+  var seen=0;
+  b.markers.forEach(function(m,i){ var k=h("button",{class:"hot",type:"button",style:"left:"+m[0]+"%;top:"+m[1]+"%","aria-label":"Marker "+(i+1)+": "+m[2]},String(i+1));
+    k.addEventListener("click",function(){ $$(".hot",st).forEach(function(x){x.classList.remove("active");}); k.classList.add("active"); if(!k.classList.contains("seen")){ k.classList.add("seen"); seen++; $(".counter",d).textContent=seen+" of "+b.markers.length+" explored"; }
+      pop.className="pop ok"; pop.innerHTML='<b>'+(i+1)+'. '+m[2]+'</b>'+m[3]+(seen===b.markers.length?'<div style="margin-top:8px;color:var(--good);font-weight:500">All '+b.markers.length+' found.</div>':''); });
+    st.appendChild(k); });
+  d.appendChild(st); d.appendChild(pop);
+  return wrap("",d,"wide");
+};
+R.sort=function(b){
+  var d=h("div",{class:"sort"}); d.innerHTML='<h2 class="bt" style="text-align:center">'+b.title+'</h2><p class="help">'+b.sub+'</p><div class="current" aria-live="polite"></div><div class="piles" role="group" aria-label="Piles"></div><div class="out"></div>';
+  var cards=shuffle(b.cards), i=0, right=0, cur=$(".current",d), piles=$(".piles",d), out=$(".out",d);
+  b.piles.forEach(function(p,pi){ var btn=h("button",{class:"pile",type:"button"},p+'<span class="got"></span>'); btn.addEventListener("click",function(){ place(pi,btn); }); piles.appendChild(btn); });
+  function show(){ if(i>=cards.length){ cur.innerHTML='<small>Done</small><b>'+right+' of '+cards.length+' sorted right the first time</b>'; out.innerHTML='<div class="fb ok" role="status"><b>All sorted.</b>'+(b.rule||"When you’re not sure, check the SDS or ask before you put something away.")+'</div><button class="btn ghost" type="button" data-again>Sort again</button>'; $("[data-again]",out).addEventListener("click",reset); return; }
+    cur.innerHTML='<small>'+(i+1)+' of '+cards.length+'</small><b>'+cards[i][0]+'</b>'; }
+  var miss=false;
+  function place(pi,btn){ if(i>=cards.length) return; var c=cards[i];
+    if(c[1]===pi){ if(!miss) right++; miss=false; $(".got",btn).innerHTML+='✓ '+c[0]+'<br>'; out.innerHTML='<div class="fb ok" role="status"><b>Right.</b>'+c[2]+'</div>'; i++; show(); }
+    else { miss=true; out.innerHTML='<div class="fb no" role="status"><b>Not that one.</b>'+c[0]+' doesn’t go in “'+b.piles[pi]+'.” Try another.</div>'; } }
+  function reset(){ cards=shuffle(b.cards); i=0; right=0; miss=false; $$(".got",piles).forEach(function(g){g.innerHTML="";}); out.innerHTML=""; show(); }
+  show(); return wrap(b.band?"band":"",d);
+};
+R.tabs=function(b){
+  var d=h("div",{class:"tabs"}); var tl=h("div",{role:"tablist","aria-label":"Hazard types"}); d.appendChild(tl);
+  b.tabs.forEach(function(t,i){ var id="tab"+i, pid="tp"+i;
+    var tab=h("button",{role:"tab",id:id,"aria-controls":pid,"aria-selected":String(i===0),tabindex:i===0?"0":"-1",type:"button"},t[0]); tl.appendChild(tab);
+    var p=h("div",{role:"tabpanel",id:pid,"aria-labelledby":id},'<ul>'+t[1].map(function(x){return '<li class="say">'+x+'</li>';}).join("")+'</ul>'); if(i) p.hidden=true; d.appendChild(p);
+    tab.addEventListener("click",function(){ sel(i); });
+    tab.addEventListener("keydown",function(e){ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ var n=(i+(e.key==="ArrowRight"?1:-1)+b.tabs.length)%b.tabs.length; sel(n); $$("[role=tab]",tl)[n].focus(); } });
   });
-  return false;
-}});
+  function sel(n){ $$("[role=tab]",tl).forEach(function(t,j){ t.setAttribute("aria-selected",String(j===n)); t.tabIndex=j===n?0:-1; }); $$("[role=tabpanel]",d).forEach(function(p,j){ p.hidden=j!==n; }); }
+  return wrap("",d);
+};
+R.checklist=function(b){
+  var d=h("div"); d.innerHTML='<h2 class="bt">'+b.title+'</h2><div class="checklist"></div><div class="done-msg" aria-live="polite"></div>';
+  b.items.forEach(function(x){ var l=h("label",null,'<input type="checkbox"><span class="say">'+x+'</span>'); $(".checklist",d).appendChild(l); });
+  d.addEventListener("change",function(){ var all=$$("input",d).every(function(c){return c.checked;}); $(".done-msg",d).innerHTML=all?'<div class="fb ok"><b>All checked.</b>'+b.done+'</div>':""; });
+  return wrap(b.band?"band":"",d);
+};
+R.accordion=function(b){
+  var d=h("div"); d.innerHTML='<h2 class="bt">'+b.title+'</h2>'; var a=h("div",{class:"acc"});
+  b.items.forEach(function(it,i){ var id="ac"+i+Math.random().toString(36).slice(2,6); var bt=h("button",{type:"button","aria-expanded":String(i===0),"aria-controls":id},it[0]+'<span aria-hidden="true">'+(i===0?"−":"+")+'</span>'); var p=h("div",{class:"panel say",id:id},it[1]); if(i) p.hidden=true;
+    bt.addEventListener("click",function(){ var open=bt.getAttribute("aria-expanded")!=="true"; bt.setAttribute("aria-expanded",String(open)); p.hidden=!open; $("span",bt).textContent=open?"−":"+"; }); a.appendChild(bt); a.appendChild(p); });
+  d.appendChild(a); return wrap("",d);
+};
 
-/* 5 Clean it or call it */
-L.push({ id:"spill", title:"Clean It or Call It?", short:"Clean it or call it?", why:"Most spills are small, and you can clean them safely. A few are not, and trying to handle them alone is how small accidents become big ones.", render(m){
-  m.innerHTML = head(5, this) + `
-  <p class="say"><b>When something spills, gather the facts first:</b> what spilled, how much, where, and whether anyone is hurt. Then make one call.</p>
-  <div class="rulebox say"><b>Clean it</b> only if all of these are true: you know what it is, it's small enough for your spill kit, you have the right kit and training, no one is hurt, and there's no fire or vapor risk.<br><br><b>Call it</b> if any one of them isn't true: warn the people around you, leave the area, and call your supervisor or EH&amp;S (Environmental Health and Safety).</div>
-  <div class="act" id="spillAct"></div>`;
-  const scenes=[
-    {name:"Acid on the bench", facts:{"What":"1 M hydrochloric acid, from a labeled bottle","How much":"About 50 mL","Where":"On the bench, away from people","Anyone hurt?":"No"}, ok:"clean", fb:"<b>Clean it, with a buddy.</b> You know what it is, it's small, and your spill kit has acid neutralizer. Gear up, neutralize, absorb, bag it as hazardous waste, and report it."},
-    {name:"Solvent near a hot plate", facts:{"What":"Acetone, highly flammable","How much":"About 1 liter","Where":"Spreading toward a hot plate that's on","Anyone hurt?":"No"}, ok:"call", fb:"<b>Call it.</b> A liter of flammable solvent near an ignition source is a fire risk. Warn others, leave, and call EH&amp;S. Don't try to wipe it up."},
-    {name:"Mystery liquid", facts:{"What":"Unknown. The bottle has no label","How much":"About 100 mL","Where":"On the floor by the sink","Anyone hurt?":"No"}, ok:"call", fb:"<b>Call it.</b> If you don't know what it is, you can't choose the right gear or cleanup. Keep people away and call EH&amp;S."},
-    {name:"Base splash", facts:{"What":"Sodium hydroxide solution, labeled","How much":"About 20 mL","Where":"On the bench and a coworker's forearm","Anyone hurt?":"Yes, skin contact"}, ok:"call", fb:"<b>Call it, and help your coworker first.</b> Someone's hurt, so the spill waits. Get them to the safety shower or sink to rinse for at least 15 minutes, remove contaminated clothing, and call for help."}
+/* ---------- Storyline-style interactions ---------- */
+function storyShell(title,intro){ var s=h("div",{class:"story"}); s.innerHTML='<p class="tag">Interactive</p><h3>'+title+'</h3><p class="intro say">'+intro+'</p>'; return s; }
+R.story=function(b){ return wrap("",STORY[b.key](),"wide"); };
+var STORY={};
+
+STORY.labelDecoder=function(){
+  var s=storyShell("Label Decoder","Explore this real-world label. Tap each of its six parts to see what it means. Then use the label to make a decision.");
+  var parts=[
+    ["Product name",'<small>Product identifier</small><span class="pn">ACETONE</span><br>Product No. 1001 · 4 L',"The chemical’s full name and product number. Match it to the SDS before you use it."],
+    ["Pictograms",'<small>Pictograms</small><span class="picts">'+GHS.flame+GHS.exclaim+'</span>Flame · Exclamation mark',"Each red diamond shows a type of hazard. Here: flame (flammable) and exclamation mark (irritant)."],
+    ["Signal word",'<small>Signal word</small><span class="sig">DANGER</span>',"“Danger” means at least one hazard is severe. “Warning” would mean less severe."],
+    ["Hazard statements",'<small>Hazard statements</small>Highly flammable liquid and vapor. Causes serious eye irritation. May cause drowsiness or dizziness.',"What the chemical can do to you: catch fire easily, irritate your eyes, and make you dizzy."],
+    ["Precautionary statements",'<small>Precautionary statements</small>Keep away from heat, hot surfaces, sparks, open flames and other ignition sources. No smoking. Wear eye protection. IF IN EYES: Rinse cautiously with water for several minutes. Remove contact lenses, if present and easy to do. Continue rinsing.',"How to work with it safely, and what to do if you’re exposed."],
+    ["Supplier",'<small>Supplier</small>Sample Chemical Co. (fictional) · 100 Example Way, Riverside, CA · (555) 010-0100',"Who made it and how to reach them. Use this to get the SDS if it’s missing."]
   ];
-  const act=$("#spillAct",m); let i=0, right=0;
-  function scene(){
-    const s=scenes[i];
-    act.innerHTML=`<p class="act-tag">Practice: Clean it or call it?</p><p class="pager">Scene ${i+1} of ${scenes.length}</p><h3>${s.name}</h3><button class="btn ghost" type="button" data-facts>Gather the facts</button><div class="facts" hidden></div><div class="row choose" hidden><button class="btn" type="button" data-c="clean">Clean it</button><button class="btn" type="button" data-c="call">Call it</button></div>`;
-    const f=$(".facts",act); f.innerHTML=Object.entries(s.facts).map(([k,v])=>`<div class="fact"><small>${k}</small>${v}</div>`).join("");
-    $("[data-facts]",act).addEventListener("click",e=>{ f.hidden=false; $(".choose",act).hidden=false; e.target.remove(); $(".choose button",act).focus(); });
-    $$("[data-c]",act).forEach(b=>b.addEventListener("click",()=>{
-      $$("[data-c]",act).forEach(x=>x.disabled=true);
-      const ok=b.dataset.c===s.ok; if(ok) right++;
-      act.appendChild(el("div",{class:"fb "+(ok?"ok":"no"),role:"status"},(ok?"":"<b>Not this time.</b>")+s.fb));
-      const nx=el("button",{class:"btn",type:"button",style:"margin-top:14px"}, i<scenes.length-1?"Next scene →":"See my results");
-      nx.addEventListener("click",()=>{ i++; if(i<scenes.length) scene(); else finish(); });
-      act.appendChild(nx); nx.focus();
-    }));
+  var cnt=h("p",{class:"counter","aria-live":"polite"},"0 of 6 parts viewed"); s.appendChild(cnt);
+  var lab=h("div",{class:"glabel",role:"group","aria-label":"Acetone chemical label"}); var pop=h("div",{class:"pop probe",role:"status"},"Tap a part of the label to start."); var seen=0;
+  parts.forEach(function(p,i){ var bt=h("button",{type:"button","aria-label":"Part "+(i+1)+": "+p[0]},'<span class="mk" aria-hidden="true">'+(i+1)+'</span>'+p[1]);
+    bt.addEventListener("click",function(){ if(!bt.classList.contains("seen")){ bt.classList.add("seen"); seen++; cnt.textContent=seen+" of 6 parts viewed"; }
+      pop.className="pop ok"; pop.innerHTML='<b>'+(i+1)+'. '+p[0]+'</b>'+p[2]; if(seen===6&&!dec.parentNode){ s.appendChild(dec); } });
+    lab.appendChild(bt); });
+  s.appendChild(lab); s.appendChild(pop);
+  var dec=mcBox({tag:"Decision · unlocked",q:"You need to warm this acetone. Can you heat it near a Bunsen burner?",opts:["Yes, if you keep the flame low","Yes, if you work quickly","No. It’s highly flammable, so keep it away from open flames.","Only if you wear goggles"],a:2,fb:"The flame pictogram and “Keep away from heat… open flames” both say no. Use the method in your SOP, like a water bath on a hot plate inside the hood."});
+  dec.style.marginTop="20px";
+  return s;
+};
+
+STORY.hoodCheck=function(){
+  var s=storyShell("Hood Check","You’re about to start a solvent transfer. Inspect this fume hood first. Tap anything that makes it unsafe to use. Two spots look wrong but are fine.");
+  var spots=[
+    [78.4,50.2,true,"Certification sticker","Problem: the sticker is dated more than a year ago. An expired hood may not pull enough air. Don’t use it until it’s re-certified."],
+    [50.5,27.4,true,"Sash height","Problem: the sash is raised far above the 18-inch mark. Higher sashes drop airflow below safe levels."],
+    [49.8,70.5,true,"Bottle at the front edge","Problem: this bottle sits right at the front edge. Keep materials at least 6 inches behind the sash."],
+    [39.7,46,true,"Chemicals stored in the back","Problem: bottles crowd the back of the hood and block the baffles. Never use a hood for storage."],
+    [78.4,33.8,false,"Airflow monitor","This one’s fine. The monitor shows a normal, current reading."],
+    [67.5,72.2,false,"Waste container","This one’s fine. It’s labeled and closed."]
+  ];
+  var cnt=h("p",{class:"counter","aria-live":"polite"},"0 of 4 problems found"); s.appendChild(cnt);
+  var st=h("div",{class:"stage"}); st.innerHTML='<img src="img/hood-check.jpg" alt="A fume hood with its sash raised high, bottles crowding the back, a bottle at the front edge, a certification sticker and an airflow monitor on the right.">';
+  var pop=h("div",{class:"pop probe",role:"status"},"Tap a numbered spot to inspect it."); var found=0;
+  spots.forEach(function(p,i){ var k=h("button",{class:"hot",type:"button",style:"left:"+p[0]+"%;top:"+p[1]+"%","aria-label":"Spot "+(i+1)+": "+p[3]},String(i+1));
+    k.addEventListener("click",function(){ $$(".hot",st).forEach(function(x){x.classList.remove("active");}); k.classList.add("active");
+      if(!k.dataset.seen){ k.dataset.seen=1; k.classList.add(p[2]?"seen":"fine"); if(p[2]){ found++; cnt.textContent=found+" of 4 problems found"; } }
+      pop.className="pop "+(p[2]?"ok":"fineb"); pop.innerHTML='<b>'+(i+1)+'. '+p[3]+'</b>'+p[4];
+      if(found===4 && !fin.parentNode){ s.appendChild(fin); } });
+    st.appendChild(k); });
+  s.appendChild(st); s.appendChild(pop);
+  var fin=h("div",{style:"margin-top:20px"});
+  fin.innerHTML='<div class="fb ok"><b>All 4 problems found.</b>Your supervisor gets the hood re-certified and cleared. The next day you set the sash and start work.</div><button class="btn" type="button" data-start>Start work</button>';
+  $("[data-start]",fin).addEventListener("click",function(e){ e.target.remove(); beep(); st.classList.add("alarm");
+    fin.appendChild(mcBox({tag:"Alarm",q:"A few minutes in, the airflow alarm sounds and the monitor flashes red. What do you do?",opts:["Keep working. You’re almost done.","Stop, close the sash, and tell my supervisor.","Raise the sash to let more air in."],a:1,fb:"An alarm means the hood isn’t protecting you. Stop, close the sash, step back, and report it. Don’t restart until it’s fixed."})); });
+  return s;
+};
+function beep(){ try{ var C=window.AudioContext||window.webkitAudioContext; if(!C) return; var c=new C(), o=c.createOscillator(), g=c.createGain(); o.frequency.value=880; g.gain.value=.05; o.connect(g); g.connect(c.destination); o.start(); setTimeout(function(){o.stop(); c.close&&c.close();},700); }catch(e){} }
+
+STORY.cleanOrCall=function(){
+  var s=storyShell("Clean It or Call It?","Four spills, four calls. Gather the facts first, then decide: clean it up with a buddy, or evacuate and call EH&S.");
+  s.insertBefore(h("img",{src:"img/spill.jpg",alt:"A gloved hand reaching toward a tipped beaker and a liquid spill spreading across a dark lab bench.",style:"width:100%;border-radius:3px;margin:0 0 18px"}),$(".intro",s).nextSibling);
+  var RULE='<b>Clean it only if all of these are true:</b> it’s under 1 L, you know what it is, it’s low hazard, the area is ventilated, you’re trained, and a buddy is present.<br><b>Otherwise call it:</b> evacuate, post a lookout, and call EH&amp;S.';
+  var SP=[
+    {n:"Spill 1",f:[["Chemical (SDS)","Dilute acetic acid, a low-hazard irritant"],["Volume","About 200 mL"],["Ventilation","Inside a running fume hood"],["Trained?","Yes, and a coworker is with you"]],ok:"clean",why:"Every fact checks out: known, small, low hazard, ventilated, trained, with a buddy. Neutralize, absorb, bag it, and label it as hazardous waste."},
+    {n:"Spill 2",f:[["Chemical (SDS)","Acetone, highly flammable"],["Volume","About 2 L"],["Ventilation","Open bench, next to a hot plate that’s on"],["Trained?","Yes"]],ok:"call",why:"It’s over 1 L, and there’s an ignition source. Leave and call."},
+    {n:"Spill 3",f:[["Chemical (SDS)","Hydrofluoric acid"],["Volume","A few mL"],["Ventilation","Inside a fume hood"],["Trained?","Yes, on general spills"]],ok:"call",why:"Hydrofluoric acid is never yours to clean up, no matter how small. It burns through skin to bone and needs specialized response."},
+    {n:"Spill 4",f:[["Chemical (SDS)","Unknown. The bottle has no label"],["Volume","About 100 mL"],["Ventilation","Open bench"],["Trained?","Yes"]],ok:"call",why:"If you don’t know what it is, you can’t choose the right gear or cleanup. Keep people away and call."}
+  ];
+  var ruleBox=h("div",{class:"pop probe",style:"margin:0 0 16px"},RULE); ruleBox.hidden=true;
+  var whyBtn=h("button",{class:"chip",type:"button","aria-pressed":"false"},"Why? Show the rule"); whyBtn.addEventListener("click",function(){ ruleBox.hidden=!ruleBox.hidden; whyBtn.setAttribute("aria-pressed",String(!ruleBox.hidden)); });
+  var tools=h("div",{class:"tools"}); tools.appendChild(whyBtn); s.appendChild(tools); s.appendChild(ruleBox);
+  var area=h("div"); s.appendChild(area); var i=0,right=0;
+  function scene(){ var sp=SP[i]; area.innerHTML='<p class="counter">'+sp.n+' of 4</p><div class="cards6" data-f></div><p class="say" style="font:400 14px var(--sans);color:var(--muted);margin:12px 0 0">Tap each card to reveal the fact.</p><div class="row" data-c hidden style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="button" data-v="clean">Clean it</button><button class="btn" type="button" data-v="call">Call it</button></div><div data-out></div>';
+    var fc=$("[data-f]",area), shown=0;
+    sp.f.forEach(function(f){ var b=h("button",{class:"c6",type:"button"},'<b style="display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">'+f[0]+'</b>Tap to reveal'); b.addEventListener("click",function(){ if(b.dataset.on) return; b.dataset.on=1; b.innerHTML='<b style="display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">'+f[0]+'</b>'+f[1]; b.classList.add("done"); shown++; if(shown===4){ $("[data-c]",area).hidden=false; } }); fc.appendChild(b); });
+    $$("[data-v]",area).forEach(function(b){ b.addEventListener("click",function(){ $$("[data-v]",area).forEach(function(x){x.disabled=true;}); var ok=b.dataset.v===sp.ok; if(ok) right++;
+      var out=$("[data-out]",area); out.innerHTML='<div class="fb '+(ok?"ok":"no")+'" role="status"><b>'+(ok?"Right call: ":"Not this time. It’s a ")+(sp.ok==="clean"?"clean it.":"call it.")+'</b>'+sp.why+'</div>';
+      var nx=h("button",{class:"btn",type:"button"},i<3?"Next spill":"See my results"); nx.addEventListener("click",function(){ i++; if(i<4) scene(); else end(); }); out.appendChild(nx); nx.focus(); }); });
   }
-  function finish(){
-    const all=right===scenes.length;
-    act.innerHTML=`<p class="act-tag">Practice: Clean it or call it?</p><div class="fb ${all?"ok":"no"}" role="status"><b>${right} of ${scenes.length} calls right.</b>${all?"You gathered the facts and made the right call every time.":"Mastery means the right call in every scene. Run through them again; the rule box above has everything you need."}</div><button class="btn ghost" type="button" style="margin-top:12px">Run the scenes again</button>`;
-    $("button",act).addEventListener("click",()=>{i=0;right=0;scene();});
-    if(all) complete(5);
+  function end(){ var all=right===4; area.innerHTML='<div class="fb '+(all?"ok":"no")+'" role="status"><b>'+right+' of 4 calls right.</b>'+(all?"You let the facts decide every time.":"Open the rule with “Why?” and run the spills again.")+'</div><button class="btn ghost" type="button">Run the spills again</button>'; $("button",area).addEventListener("click",function(){ i=0; right=0; scene(); }); }
+  scene(); return s;
+};
+
+STORY.first60=function(){
+  var s=storyShell("First 60 Seconds","A coworker gets splashed in the eye while a small acid spill spreads across the bench. Choose your actions, in order, before the timer runs out.");
+  var A=[["Guide your coworker to the eyewash",1,""],["Start the flush and keep it running for 15 minutes",2,""],["Alert your supervisor",3,""],["Contain the spill, only if it’s safe",4,""],["Wipe up the spill first",0,"Your coworker waits with acid in their eye while you clean. Eyes come first, every time."],["Look up the SDS before doing anything",0,"Flush first, read later. Someone else can pull up the SDS while the water runs."]];
+  var NEED=["Your coworker can’t see. Get them to the eyewash first.","Once they’re there, the water has to start and keep running.","Now get help. Your supervisor needs to know.","Only now, if it’s safe, contain the spill."];
+  var timerOn=true, left=60, tick=null, step=1, attempts=1, over=false;
+  var bar=h("div",{class:"timer"},'<span class="clock" aria-live="off">60s</span><span class="bar" aria-hidden="true"><span style="width:100%"></span></span><button class="chip" type="button" aria-pressed="false" data-t>Turn off timer</button>'); s.appendChild(bar);
+  var cards=h("div",{class:"cards6",role:"group","aria-label":"Actions"}); s.appendChild(cards); var log=h("ol",{class:"steps-done"}); var out=h("div",{"aria-live":"polite"}); s.appendChild(log); s.appendChild(out);
+  var go2=h("button",{class:"btn",type:"button"},"Start the clock"); s.appendChild(go2);
+  $("[data-t]",bar).addEventListener("click",function(e){ timerOn=!timerOn; e.target.setAttribute("aria-pressed",String(!timerOn)); e.target.textContent=timerOn?"Turn off timer":"Turn timer back on"; if(!timerOn){ clearInterval(tick); $(".clock",bar).textContent="Off"; } else if(!go2.parentNode && !over){ run(); } });
+  function draw(){ cards.innerHTML=""; shuffle(A).forEach(function(a){ var b=h("button",{class:"c6",type:"button"},a[0]); b.addEventListener("click",function(){ choose(a,b); }); cards.appendChild(b); }); }
+  function run(){ clearInterval(tick); if(!timerOn) return; tick=setInterval(function(){ left--; $(".clock",bar).textContent=left+"s"; $(".bar span",bar).style.width=(left/60*100)+"%"; if(left<=0){ clearInterval(tick); timeUp(); } },1000); }
+  function choose(a,b){ if(over||go2.parentNode) return;
+    if(a[1]===step){ b.disabled=true; b.classList.add("done"); b.innerHTML='<span class="o">'+step+'.</span> '+a[0]; out.innerHTML='<div class="fb ok"><b>Step '+step+' done.</b></div>'; step++; if(step===5) win(); }
+    else { attempts++; out.innerHTML='<div class="fb no"><b>'+(a[1]===0?"That costs time.":"Not yet.")+'</b>'+(a[1]===0?a[2]:NEED[step-1])+' Try again.</div>'; }
   }
-  scene();
-  return false;
-}});
+  function timeUp(){ over=true; out.innerHTML='<div class="fb no"><b>Time’s up.</b>In a real splash, every second counts. Run it again, or turn off the timer if you need more time.</div>'; var r=h("button",{class:"btn ghost",type:"button"},"Try again"); r.addEventListener("click",reset); out.appendChild(r); }
+  function win(){ clearInterval(tick); over=true; out.innerHTML='<div class="fb ok" role="status"><b>You handled the first 60 seconds'+(timerOn?" with "+left+" seconds to spare":"")+'.</b>Eyes first, flush, get help, then the spill. '+(attempts>1?"It took you "+attempts+" tries; that’s practice paying off.":"Right the first time.")+'</div>'; var r=h("button",{class:"btn ghost",type:"button"},"Run it again"); r.addEventListener("click",reset); out.appendChild(r); }
+  function reset(){ left=60; step=1; attempts=1; over=false; $(".clock",bar).textContent=timerOn?"60s":"Off"; $(".bar span",bar).style.width="100%"; out.innerHTML=""; draw(); run(); }
+  go2.addEventListener("click",function(){ go2.remove(); draw(); run(); });
+  cards.innerHTML='<p style="font:400 14px var(--sans);color:var(--muted);margin:0">Six action cards appear when you start. Pick the four right actions, in order.</p>';
+  return s;
+};
 
-/* 6 First 60 seconds */
-L.push({ id:"sixty", title:"The First 60 Seconds", short:"First 60 seconds", why:"In an emergency, the first minute decides how bad it gets. You won't have time to look things up, so the moves need to be automatic.", render(m){
-  m.innerHTML = head(6, this) + `
-  <p class="say"><b>Three emergencies, three first moves.</b></p>
-  <ul class="tidy say">
-    <li><b>Splash on skin or in eyes:</b> get to the eyewash or safety shower right away and flush for at least 15 minutes. Hold your eyelids open. Then report it.</li>
-    <li><b>Fire:</b> warn people and pull the alarm. Use an extinguisher only if the fire is small and you're trained. If clothing catches fire, use the safety shower or a fire blanket. Otherwise, get out and close the door.</li>
-    <li><b>An old or unknown chemical:</b> don't open it, shake it or move it. Some chemicals, like old ether, can form explosive crystals. Tell your supervisor or call EH&amp;S.</li>
-  </ul>
-  <p class="note">Know where your eyewash, safety shower, fire extinguisher, fire blanket and exits are before you need them.</p>`;
-  let n=0; const mark=()=>{ if(++n>=3) complete(6); };
-  m.appendChild(mcq({ tag:"Scenario 1 of 3", q:"A drop of dilute acid splashes into your eye. It stings, but it's just one drop. What's your first move?", opts:[
-    {t:"Rinse it at the sink for a few seconds, then keep working.", ok:false, fb:"A few seconds isn't enough. Even small splashes can damage your eye."},
-    {t:"Go straight to the eyewash, hold your eyelids open and flush for at least 15 minutes, then report it.", ok:true, fb:"Every second counts with eyes. Flush for the full 15 minutes even if it feels better sooner, and report it so it's checked."},
-    {t:"Find the SDS first to see what to do.", ok:false, fb:"Flush first, read later. A coworker can pull up the SDS while you're at the eyewash."}
-  ], onDone:ok=>ok&&mark()}));
-  m.appendChild(mcq({ tag:"Scenario 2 of 3", q:"Solvent in a beaker catches fire. Flames are spreading across the bench, and you've never been trained on the extinguisher. What do you do?", opts:[
-    {t:"Grab the extinguisher and figure it out.", ok:false, fb:"Using an extinguisher without training can spread the fire or put you in danger."},
-    {t:"Throw water on it.", ok:false, fb:"Water can spread a solvent fire. Never use it on burning flammable liquids."},
-    {t:"Warn everyone, pull the alarm, get out and close the door behind you.", ok:true, fb:"A spreading fire and no training means you leave. Closing the door helps contain the fire."}
-  ], onDone:ok=>ok&&mark()}));
-  m.appendChild(mcq({ tag:"Scenario 3 of 3", q:"While clearing a shelf, you find a dusty, half-used bottle of diethyl ether with no date and a crusty cap. What do you do?", opts:[
-    {t:"Leave it where it is, don't open or shake it, and tell your supervisor or EH&S.", ok:true, fb:"Old ether can form peroxide crystals that explode from friction or a bump. Leave it alone and let trained people handle it."},
-    {t:"Carefully open it to check if it's still good.", ok:false, fb:"Twisting a crusty cap can set off peroxide crystals. Never open an old peroxide-forming chemical."},
-    {t:"Pour it into the organic waste container.", ok:false, fb:"Moving and pouring it is exactly what's risky. Leave it in place and report it."}
-  ], onDone:ok=>ok&&mark()}));
-  return false;
-}});
+/* ---------- waste label ---------- */
+R.wasteLabel=function(){
+  var M=[
+    ["Missing “Hazardous Waste”","Every container must say “Hazardous Waste” on the official label."],
+    ["A formula, not a name","Write “nitric acid” in full. The person handling it may not know “HNO3.”"],
+    ["Incompatible chemicals mixed","Nitric acid with organic waste can react violently and explode. Use a separate, vented bottle."],
+    ["Hazard class is blank","Add “Corrosive, Oxidizer” so handlers know how to treat it."],
+    ["No start date","Add the date waste was first added. Waste must ship out within 270 days."],
+    ["Bottle about 95% full","Fill to no more than 80%, so there’s room for vapor and safe handling."]
+  ];
+  var d=h("div"); d.innerHTML='<h2 class="bt">Fix This Waste Label</h2><p class="sub" style="margin-top:-14px">This label has 6 problems. Tap each marker to find out what’s wrong.</p><p class="counter" aria-live="polite">0 of 6 found</p>';
+  var box=h("div",{class:"card",style:"padding:22px;display:grid;grid-template-columns:minmax(90px,160px) 1fr;gap:22px;align-items:center"});
+  var mk=function(n){ return '<button class="hot wl-m" type="button" data-m="'+n+'" style="position:relative;left:auto;top:auto;margin:0 0 0 8px;width:30px;height:30px;font-size:13px;display:inline-grid;vertical-align:middle" aria-label="Marker '+(n+1)+': '+M[n][0]+'">'+(n+1)+'</button>'; };
+  box.innerHTML='<div style="text-align:center"><svg viewBox="0 0 200 380" style="width:100%;max-width:150px" role="img" aria-label="A waste bottle filled almost to the top"><rect x="70" y="4" width="60" height="44" rx="5" fill="#3F3F46"/><path d="M60 48h80v40c30 14 40 30 40 56v220a12 12 0 0 1-12 12H32a12 12 0 0 1-12-12V144c0-26 10-42 40-56z" fill="#F4F1E6" stroke="#9CA3AF" stroke-width="4"/><path d="M22 112h156v248a10 10 0 0 1-10 10H32a10 10 0 0 1-10-10z" fill="#E7D9A6" opacity=".9"/></svg><div>'+mk(5)+'</div></div>'+
+   '<div style="border:2px solid #222;border-radius:4px;overflow:hidden;font-family:var(--sans)"><div style="background:#FAD933;padding:12px 16px;font:900 22px var(--sans);letter-spacing:.04em">WASTE'+mk(0)+'</div>'+
+   '<div style="padding:10px 16px;border-top:1px solid #DDD"><small style="font:700 10.5px var(--sans);letter-spacing:.08em;color:#666;display:block">CONTENTS</small>HNO3, organic waste'+mk(1)+mk(2)+'</div>'+
+   '<div style="padding:10px 16px;border-top:1px solid #DDD"><small style="font:700 10.5px var(--sans);letter-spacing:.08em;color:#666;display:block">HAZARD CLASS</small>_______________'+mk(3)+'</div>'+
+   '<div style="padding:10px 16px;border-top:1px solid #DDD"><small style="font:700 10.5px var(--sans);letter-spacing:.08em;color:#666;display:block">ACCUMULATION START DATE</small>__ / __ / ____'+mk(4)+'</div>'+
+   '<div style="padding:10px 16px;border-top:1px solid #DDD"><small style="font:700 10.5px var(--sans);letter-spacing:.08em;color:#666;display:block">GENERATOR</small>J. Smith, Room 2108</div></div>';
+  d.appendChild(box); var pop=h("div",{class:"pop probe",role:"status"},"Tap a numbered marker to start."); d.appendChild(pop); var seen=0;
+  $$("[data-m]",box).forEach(function(b){ b.addEventListener("click",function(){ var n=+b.dataset.m; $$("[data-m]",box).forEach(function(x){x.classList.remove("active");}); b.classList.add("active"); if(!b.classList.contains("seen")){ b.classList.add("seen"); seen++; $(".counter",d).textContent=seen+" of 6 found"; } pop.className="pop ok"; pop.innerHTML='<b>'+(n+1)+'. '+M[n][0]+'</b>'+M[n][1]+(seen===6?'<div style="margin-top:8px;color:var(--good);font-weight:500">All 6 found. That bottle would have been rejected at pickup, or worse.</div>':''); }); });
+  var s=wrap("",d); if(window.matchMedia && window.matchMedia("(max-width:560px)").matches){ box.style.gridTemplateColumns="1fr"; } return s;
+};
 
-/* 7 Waste and leaving it safe */
-L.push({ id:"waste", title:"Waste and Leaving It Safe", short:"Waste and leave it safe", why:"A bad waste label can hurt someone you'll never meet. The person who picks up your container, or uses your station next, depends on what you left behind.", render(m){
-  m.innerHTML = head(7, this) + `
-  <p class="say"><b>A hazardous waste container needs four things.</b></p>
-  <ul class="tidy say">
-    <li>The words <b>"Hazardous Waste"</b> on the official label</li>
-    <li>The <b>full chemical names</b> of everything inside, no formulas or abbreviations</li>
-    <li>The <b>hazard class</b> and the <b>accumulation start date</b></li>
-    <li>A cap that's <b>closed</b> unless you're adding waste</li>
-  </ul>
-  <p class="say">And never mix incompatible chemicals in the same container.</p>
-  <div class="act" id="wlAct">
-    <p class="act-tag">Practice 1 of 3: Fix this waste label</p>
-    <p class="q">This container is ready for pickup. Find all six errors. Tap any part of the label or the bottle to inspect it.</p>
-    <p class="score" id="wlScore">0 of 6 errors found</p>
-    <div class="wl-wrap">
-      <div class="wl-bottle"><button type="button" data-w="cap" aria-label="Inspect the bottle cap"><svg viewBox="0 0 120 220" aria-hidden="true"><rect class="cap" x="40" y="6" width="40" height="20" rx="3" fill="#4B5563"/><rect x="36" y="26" width="48" height="10" fill="#fff" stroke="#9CA3AF" stroke-width="2"/><path d="M38 36h44v20c18 8 26 18 26 34v110a12 12 0 0 1-12 12H24a12 12 0 0 1-12-12V90c0-16 8-26 26-34z" fill="#E8DDB5" stroke="#9CA3AF" stroke-width="3"/><path d="M64 14l14-10" stroke="#B42318" stroke-width="3"/></svg><span class="note">Tap the cap</span></button></div>
-      <div class="wl" role="group" aria-label="Waste label">
-        <button type="button" class="hdr" data-w="hdr">WASTE</button>
-        <button type="button" data-w="formula"><small>Contents</small>HNO3, organic waste</button>
-        <button type="button" data-w="mix"><small>Mixture</small>Nitric acid waste + used solvents in one bottle</button>
-        <button type="button" data-w="class"><small>Hazard class</small>______________</button>
-        <button type="button" data-w="date"><small>Accumulation start date</small>__ / __ / ____</button>
-        <button type="button" data-w="gen"><small>Generator</small>J. Smith, Room 2108</button>
-      </div>
-    </div>
-    <ul class="found-list" id="wlList"></ul>
-  </div>`;
-  const W={
-    hdr:{p:true,fb:"<b>Missing \"Hazardous Waste.\"</b> Every container must say \"Hazardous Waste\" on the official label."},
-    formula:{p:true,fb:"<b>A formula instead of a name.</b> Write \"nitric acid,\" not \"HNO3.\" The person handling it may not know the formula."},
-    mix:{p:true,fb:"<b>Incompatible chemicals mixed.</b> Nitric acid with organic solvents can react violently, build pressure and explode. Acid waste goes in its own vented container."},
-    class:{p:true,fb:"<b>Hazard class is blank.</b> List the hazards, like corrosive, oxidizer or flammable, so handlers know how to treat it."},
-    date:{p:true,fb:"<b>No start date.</b> The accumulation start date tracks how long waste has been stored, which has legal limits."},
-    cap:{p:true,fb:"<b>The cap is loose.</b> Waste containers stay closed unless you're adding to them, so vapor doesn't escape."},
-    gen:{p:false,fb:"<b>This one's fine.</b> The generator's name and room are filled in, so EH&amp;S knows who to ask."}
-  };
-  let found=0;
-  $$("[data-w]",m).forEach(b=>b.addEventListener("click",()=>{
-    const w=W[b.dataset.w]; if(b.dataset.seen) return; b.dataset.seen=1; b.classList.add(w.p?"found":"fine");
-    $("#wlList",m).appendChild(el("li",{class:w.p?"p":"f"},w.fb));
-    if(w.p){ found++; $("#wlScore",m).textContent=`${found} of 6 errors found`; if(found===6){ $("#wlList",m).appendChild(el("li",{class:"p",role:"status"},"<b>All six found.</b> That container would have been rejected at pickup, or worse.")); mark(); } }
-  }));
-  // sort
-  const sort=el("div",{class:"act"});
-  sort.innerHTML=`<p class="act-tag">Practice 2 of 3: Which bin?</p><p class="q">Sort each item into the right container. Tap an item, then tap its bin.</p><div class="pool" role="group" aria-label="Items to sort"></div><div class="bins"></div>`;
-  const ITEMS=[{t:"A broken beaker, rinsed clean",b:"glass"},{t:"A used syringe needle",b:"sharps"},{t:"Used acetone from rinsing glassware",b:"organic"},{t:"Dilute hydrochloric acid waste",b:"acid"}];
-  const BINS=[{id:"glass",n:"Lab glass box",d:"Clean broken glass"},{id:"sharps",n:"Sharps container",d:"Needles, blades"},{id:"organic",n:"Organic solvent waste",d:"Flammable solvents"},{id:"acid",n:"Acid waste",d:"Separate, vented cap"}];
-  let pick=null, sorted=0; const sp=$(".pool",sort), sb=$(".bins",sort);
-  ITEMS.forEach(it=>{ const b=el("button",{type:"button","aria-pressed":"false"},it.t); b.addEventListener("click",()=>{ $$("button",sp).forEach(x=>x.setAttribute("aria-pressed","false")); b.setAttribute("aria-pressed","true"); pick={it,b}; $$(".bin",sb).forEach(x=>x.classList.add("ready")); }); sp.appendChild(b); });
-  BINS.forEach(bn=>{ const b=el("button",{class:"bin",type:"button"},`<b>${bn.n}</b>${bn.d}<span class="got"></span>`); b.addEventListener("click",()=>{
-    if(!pick) return; $$(".fb",sort).forEach(f=>f.remove()); $$(".bin",sb).forEach(x=>x.classList.remove("ready"));
-    if(pick.it.b===bn.id){ $(".got",b).innerHTML+=`✓ ${pick.it.t}<br>`; pick.b.remove(); sorted++; sort.appendChild(el("div",{class:"fb ok",role:"status"},"<b>Right bin.</b>")); if(sorted===ITEMS.length){ sort.appendChild(el("div",{class:"fb ok"},"<b>All sorted.</b> When you're unsure, check the SDS or ask before you pour.")); mark(); } }
-    else { pick.b.setAttribute("aria-pressed","false"); sort.appendChild(el("div",{class:"fb no",role:"status"},`<b>Not that one.</b> ${pick.it.t} doesn't belong in the ${bn.n.toLowerCase()}. Try another bin.`)); }
-    pick=null; }); sb.appendChild(b); });
-  m.appendChild(sort);
-  // leave it safe
-  const lv=el("div",{class:"act"});
-  const CH=[{t:"Cap and label every container you used",ok:true},{t:"Return chemicals to their storage cabinets",ok:true},{t:"Turn off hot plates, gas and burners",ok:true},{t:"Wipe down the bench",ok:true},{t:"Leave your gloves on so you can open the door without touching chemicals",ok:false},{t:"Wash your hands before you leave",ok:true}];
-  lv.innerHTML=`<p class="act-tag">Practice 3 of 3: Leave it safe</p><p class="q">You're done for the day. Which of these do you do before you leave the station? Select all that apply.</p><div class="checks"></div><button class="btn" type="button" style="margin-top:14px">Check</button>`;
-  CH.forEach((c,i)=>{ const lab=el("label",{class:"check"},`<input type="checkbox" value="${i}"><span>${c.t}</span>`); $(".checks",lv).appendChild(lab); });
-  $(".btn",lv).addEventListener("click",()=>{
-    let good=true; $$(".check",lv).forEach((lab,i)=>{ const on=$("input",lab).checked; lab.classList.remove("right","wrong","miss"); if(CH[i].ok&&on) lab.classList.add("right"); else if(!CH[i].ok&&on){lab.classList.add("wrong");good=false;} else if(CH[i].ok&&!on){lab.classList.add("miss");good=false;} });
-    $$(".fb",lv).forEach(f=>f.remove());
-    lv.appendChild(el("div",{class:"fb "+(good?"ok":"no"),role:"status"}, good?"<b>Station's safe.</b> Take your gloves off before you touch doorknobs, phones or keyboards, so chemicals don't travel with you.":"<b>Almost.</b> Green is right, yellow is a step you missed, and red is something to skip. Gloves come off before you touch doors, phones or keyboards."));
-    if(good) mark();
-  });
-  m.appendChild(lv);
-  let n=0; const mark=()=>{ if(++n>=3) complete(7); };
-  return false;
-}});
-
-/* 8 Final check */
-const FINAL=[
-  {q:"Before starting a task, which of these means you're not ready yet?", l:1, o:["You've read the SOP","You'll be alone in the lab","Your goggles and lab coat are on"], a:1},
-  {q:"A label says \"Warning.\" What does that tell you?", l:2, o:["The hazards are less severe than \"Danger\"","The chemical is safe to handle without gear","The chemical is flammable"], a:0},
-  {q:"Where in the SDS do you find which gloves and gear to use?", l:2, o:["Section 2","Section 4","Section 8"], a:2},
-  {q:"Which control is the MOST effective?", l:3, o:["Wearing better gloves","Swapping in a less hazardous chemical","Posting a warning sign"], a:1},
-  {q:"The hood's airflow alarm is going off. What do you do?", l:4, o:["Work quickly to finish","Raise the sash to let more air in","Don't start: close the sash, tell your supervisor and use another hood"], a:2},
-  {q:"About 1 liter of a flammable solvent spills near a hot plate that's on. Clean it or call it?", l:5, o:["Clean it with paper towels","Call it: warn others, leave and call EH&S","Clean it, but turn off the hot plate first"], a:1},
-  {q:"A small, labeled acid spill, no one hurt, and you have a neutralizer kit. Clean it or call it?", l:5, o:["Clean it, with a buddy","Call it"], a:0},
-  {q:"Chemical splashes in your eye. How long do you flush?", l:6, o:["Until it stops stinging","At least 15 minutes","About 1 minute"], a:1},
-  {q:"You find an old, crusty bottle of ether. What do you do?", l:6, o:["Open it to check","Pour it into solvent waste","Leave it, don't move it, and report it"], a:2},
-  {q:"Which waste label entry is correct?", l:7, o:["Contents: HNO3","Contents: nitric acid","Contents: acid stuff"], a:1}
+/* ---------- final check ---------- */
+var FQ=[
+  {l:2,q:"A coworker wants to add a step that isn’t in your SOP. What do you do?",o:["Add it. It’s a small change.","Ask your supervisor to approve it first.","Skip the SOP for today.","Do it after everyone leaves."],a:1,fb:"Anything not in the SOP needs your supervisor’s OK before you start."},
+  {l:3,q:"A label shows a flame pictogram and the word “Warning.” What does it tell you?",o:["It’s flammable, and the hazard is less severe than “Danger.”","It’s explosive.","It’s safe near low heat.","It’s an oxidizer."],a:0,fb:"The pictogram tells you the type of hazard. The signal word tells you how severe."},
+  {l:5,q:"Your goggles fog up halfway through a titration. What do you do?",o:["Take them off for a moment to see better","Step away from the bench, then clear or replace them","Push them up onto your forehead","Keep working and look over the top of them"],a:1,fb:"Never uncover your eyes at the bench. Step away first."},
+  {l:4,q:"The fume hood’s certification sticker is 14 months old. What do you do?",o:["Use it. The monitor reads normal.","Don’t use it, and tell your supervisor.","Use it with the sash fully open.","Use it for quick tasks only."],a:1,fb:"Certification must be dated within the last year. An expired hood isn’t verified to protect you."},
+  {l:6,q:"You need to dilute concentrated acid. How do you mix it?",o:["Pour the water into the acid quickly","Pour the acid into the water, slowly, while stirring","Mix them in any order","Add both at the same time"],a:1,fb:"Acid into water. Never the reverse."},
+  {l:7,q:"About 2 L of acetone spills near a hot plate. Clean it or call it?",o:["Clean it with paper towels","Turn off the hot plate and clean it up","Evacuate, post a lookout, and call EH&S","Cover it with a lab coat"],a:2,fb:"Over 1 L, with an ignition source nearby: that’s a call."},
+  {l:7,q:"A coworker is splashed in the eye. What comes first?",o:["Find the SDS","Guide them to the eyewash and flush for at least 15 minutes","Clean up the spill","Fill out an incident report"],a:1,fb:"Eyes first. Flush for at least 15 minutes, then report it."},
+  {l:8,q:"Your nitric acid waste bottle is almost full. The organic waste bottle has room. What do you do?",o:["Pour the nitric acid into the organic waste","Use a new, dedicated, vented acid waste bottle","Fill the acid bottle to the top","Pour it down the sink"],a:1,fb:"Never mix nitric acid with organics, and never fill past 80%."}
 ];
-L.push({ id:"final", title:"Final Check", short:"Final check", render(m){
-  m.innerHTML = `<p class="count">Final check · 10 questions</p><h1>Final Check</h1><div class="rule"></div>
-  <p class="say">Ten questions from real moments at the bench. You need 80% to pass. There's no time limit, and every question links back to its lesson if you want a refresher.</p>
-  <form id="fc"></form>`;
-  const f=$("#fc",m);
-  FINAL.forEach((it,qi)=>{ const fs=el("fieldset",{class:"act",style:"margin:18px 0"}); fs.innerHTML=`<legend class="q" style="padding:0">${qi+1}. ${it.q}</legend><div class="checks"></div>`;
-    it.o.forEach((o,oi)=>$(".checks",fs).appendChild(el("label",{class:"check"},`<input type="radio" name="q${qi}" value="${oi}" required><span>${o}</span>`))); f.appendChild(fs); });
-  const sub=el("button",{class:"btn",type:"submit"},"Submit my answers"); f.appendChild(sub);
-  f.addEventListener("submit",e=>{ e.preventDefault();
-    let s=0; const miss=[];
-    FINAL.forEach((it,qi)=>{ const v=f.querySelector(`input[name=q${qi}]:checked`); const ok=v&&+v.value===it.a; if(ok) s++; else miss.push(it);
-      $$(`input[name=q${qi}]`,f).forEach(inp=>{ const lab=inp.closest("label"); lab.classList.remove("right","wrong"); if(+inp.value===it.a) lab.classList.add("right"); else if(inp.checked) lab.classList.add("wrong"); inp.disabled=true; }); });
-    sub.remove(); const pct=Math.round(s/FINAL.length*100); const pass=pct>=80;
-    state.final={pct,pass}; if(pass) complete(8); save();
-    const r=el("div",{class:"result "+(pass?"pass":"fail"),role:"status"});
-    r.innerHTML=`<h3>${pass?"You passed":"Not yet"}: ${pct}%</h3><p>${pass?"You're Lab Ready. Your bench card is on the next page.":"You need 80% to pass. Review the lessons below, then try again."}</p>${miss.length?`<p style="margin:0"><b>Worth a second look:</b></p><ul class="review">${[...new Set(miss.map(x=>x.l))].map(l=>`<li><a href="#${L[l].id}">${L[l].title}</a></li>`).join("")}</ul>`:""}<div class="row" style="margin-top:16px">${pass?`<a class="btn" href="#card">Get my Lab Ready Card →</a>`:`<button class="btn" type="button" data-retry>Try again</button>`}</div>`;
-    f.after(r); const rt=$("[data-retry]",r); rt&&rt.addEventListener("click",()=>render()); r.scrollIntoView({block:"center"});
-  });
-  // rating (Kirkpatrick level 1)
-  const rate=el("div",{class:"act"}); rate.innerHTML=`<p class="act-tag">One quick question</p><p class="q">How useful was this course for your job?</p><div class="stars" role="group" aria-label="Rate from 1, not useful, to 5, very useful"></div><p class="note" style="margin:10px 0 0">1 = not useful · 5 = very useful</p><p class="note" data-thanks hidden style="margin:6px 0 0">Thanks. In a real rollout, this rating feeds the course review.</p>`;
-  for(let i=1;i<=5;i++){ const b=el("button",{type:"button","aria-pressed":String(state.rating===i),"aria-label":`${i} out of 5`},String(i)); b.addEventListener("click",()=>{ state.rating=i; save(); $$("button",rate).forEach((x,j)=>x.setAttribute("aria-pressed",String(j+1===i))); $("[data-thanks]",rate).hidden=false; }); $(".stars",rate).appendChild(b); }
-  m.appendChild(rate);
-  return false;
-}});
+R.final=function(){
+  var holder=h("div"); var i=0, ans=[];
+  function q(){ var it=FQ[i]; holder.innerHTML="";
+    var box=mcBox({tag:"Question "+(i+1)+" of "+FQ.length,q:it.q,opts:it.o,a:it.a,fb:it.fb,noRetry:true},function(ok,bx){ ans[i]=ok; var nb=h("button",{class:"btn",type:"button"}, i<FQ.length-1?"Next question":"See my score"); nb.addEventListener("click",function(){ i++; if(i<FQ.length) q(); else results(); }); bx.appendChild(nb); nb.focus(); });
+    var pr=h("div",{class:"qprog","aria-hidden":"true"},'<span style="width:'+(i/FQ.length*100)+'%"></span>'); box.insertBefore(pr,$(".q",box)); holder.appendChild(box); }
+  function results(){
+    var right=ans.filter(Boolean).length, pct=Math.round(right/FQ.length*100), pass=pct>=80, miss=[];
+    FQ.forEach(function(it,k){ if(!ans[k] && miss.indexOf(it.l)<0) miss.push(it.l); });
+    S.final={pct:pct,pass:pass}; save(); if(pass) complete(9);
+    var r=h("div",{class:"results",role:"status"});
+    r.innerHTML='<p class="big">'+pct+'%</p><h3>'+(pass?"You’re Lab Ready.":"Almost there.")+'</h3><p style="font-size:15.5px;margin:0">'+(miss.length?'You missed '+(FQ.length-right)+' question'+(FQ.length-right>1?'s':'')+'. Review '+miss.map(function(l){return '<a href="#'+L[l].id+'">“'+L[l].title+'”</a>';}).join(", ")+' to see why.':"You got every question right.")+'</p>'+
+      (pass?'<label class="commit"><input type="checkbox" '+(S.committed?"checked":"")+'> I’m Lab Ready. I’ll follow these practices on the job.</label><small>In a real rollout, completion is recorded with your employer’s safety training records.</small>':'<p style="margin:14px 0 0;font:400 14.5px var(--sans)">You need 80% to finish.</p><button class="btn" type="button" data-retry>Retake the final check</button>');
+    holder.innerHTML=""; var c=h("div",{class:"col"}); holder.appendChild(r);
+    var cb=$(".commit input",r); if(cb) cb.addEventListener("change",function(){ S.committed=cb.checked; save(); });
+    var rt=$("[data-retry]",r); if(rt) rt.addEventListener("click",function(){ i=0; ans=[]; q(); });
+  }
+  if(S.final && S.final.pass){ /* show last result but allow retake */ }
+  q(); return wrap("band",holder);
+};
+R.reflect=function(){
+  var box=h("div",{class:"card kc"});
+  box.innerHTML='<p class="tag">Reflect and commit</p><p class="q">Which one habit will you change on your first day at the bench?</p><p class="hint" style="margin-top:-8px">Your answer is added to your Lab Ready Card, so you see it every time you start work.</p><label class="sr" for="habit">Your habit</label><textarea id="habit" placeholder="e.g. I’ll check the hood sticker and monitor before every transfer."></textarea><div class="sugs"><button type="button">Check the hood first</button><button type="button">Gloves off before my phone</button><button type="button">Clean it or call it</button></div><button class="btn" type="button" data-save>Save to my card</button><div data-msg aria-live="polite"></div>';
+  var ta=$("textarea",box); ta.value=S.habit||"";
+  $$(".sugs button",box).forEach(function(b){ b.addEventListener("click",function(){ ta.value=b.textContent; ta.focus(); }); });
+  $("[data-save]",box).addEventListener("click",function(){ var v=ta.value.trim(); $("[data-msg]",box).innerHTML=v?'<div class="fb ok"><b>Saved to your card.</b>“'+v.replace(/</g,"&lt;")+'”</div>':'<div class="fb no"><b>Write one habit first.</b>Or tap a suggestion.</div>'; if(v){ S.habit=v; save(); } });
+  return wrap("band",box);
+};
 
-/* 9 Card */
-L.push({ id:"card", title:"Your Lab Ready Card", short:"Lab Ready Card", render(m){
-  m.innerHTML = `<p class="count">Keep at your station</p><h1>Your Lab Ready Card</h1><div class="rule"></div>
-  <p class="say">This isn't a certificate. It's a one-page job aid for your bench, with the decisions from this course in one place. Print it or save it as a PDF.</p>
-  <div class="tools no-print"><button class="btn" type="button" id="printBtn">Print or save as PDF</button></div>
-  <div class="lr-card">
-    <header><span>LAB READY</span><b>Chemical Safety Quick Reference</b></header>
-    <div class="lr-grid">
-      <section><h4>Before lab</h4><ul><li>Read the SOP</li><li>Approved chemicals only</li><li>Never work alone</li><li>Gear on: goggles, coat, closed shoes</li></ul></section>
-      <section><h4>Read the label</h4><ul><li>Pictogram = type of hazard</li><li>Danger = more severe</li><li>Warning = less severe</li><li>SDS Section 4 = first aid</li></ul></section>
-      <section><h4>Hood check</h4><ul><li>Airflow normal, no alarm</li><li>Sash at or below the line</li><li>Baffles clear</li><li>Work 6 inches in</li></ul></section>
-      <section><h4>Clean it or call it?</h4><ul><li>Clean only if: known, small, kit, trained, no one hurt, no fire risk</li><li>Otherwise: warn, leave, call EH&amp;S</li></ul></section>
-      <section><h4>First 60 seconds</h4><ul><li>Splash: eyewash or shower</li><li>Flush at least 15 minutes</li><li>Fire: warn, alarm, exit</li><li>Old chemical: don't touch, report</li></ul></section>
-      <section><h4>Which bin?</h4><ul><li>Lab glass box</li><li>Sharps container</li><li>Organic solvent waste</li><li>Acid waste (separate, vented)</li></ul></section>
-    </div>
-  </div>
-  <h2>What happens next</h2>
-  <p class="say">The course is one step in your first month: a day-one walk-through with your supervisor, a weekly self-check using this card, and a supervisor check on one task at 30 days. You'll get a short refresher before any new chemical or procedure.</p>
-  <p><a href="../../lab-ready.html">See how this course was designed →</a></p>`;
-  $("#printBtn",m).addEventListener("click",()=>window.print());
-  complete(9);
-  return false;
-}});
+/* ---------- card page ---------- */
+R.card=function(){
+  var d=h("div"); d.innerHTML='<div id="printArea"><div class="jobaid"><header><span>LAB READY</span><b>Chemical Safety Quick Reference</b></header><div class="ja-grid">'+
+   '<section><h4>Before lab</h4><ul><li>Read the SOP</li><li>Approved chemicals only</li><li>Never work alone</li><li>Gear on: goggles, coat, closed shoes</li></ul></section>'+
+   '<section><h4>Read the label</h4><ul><li>Pictogram = type of hazard</li><li>Danger = more severe</li><li>Warning = less severe</li><li>Check the SDS for first aid</li></ul></section>'+
+   '<section><h4>First 60 seconds</h4><ul><li>Splash: eyewash or shower</li><li>Flush at least 15 minutes</li><li>Spill: report acid, base, flammable</li><li>Fire: alarm, blanket, exit</li></ul></section>'+
+   '<section><h4>Which bin?</h4><ul><li>Lab glass box</li><li>Sharps container</li><li>Organic solvent waste</li><li>Acid waste (separate, vented)</li></ul></section></div>'+
+   (S.habit?'<p class="mine"><b>My first-day habit:</b> '+S.habit.replace(/</g,"&lt;")+'</p>':'')+'</div></div><button class="attach no-print" type="button" data-print>Download Lab Ready Card (PDF)</button>';
+  $("[data-print]",d).addEventListener("click",function(){ window.print(); });
+  return wrap("",d,"wide");
+};
+R.weekly=function(){
+  var items=["Aisles at least 3 ft wide, and exits clear","Eyewash and shower reachable, with 16 in clear","Fire extinguisher in place and tagged this year","Spill kit and first aid kit stocked","Every container labeled with its full name","Incompatible chemicals stored apart","Peroxide formers dated and in date","Waste closed, labeled, under 80% full","No food or drink, and fridges labeled","Cords in good shape, with no daisy chains"];
+  var d=h("div"); d.innerHTML='<div class="col" style="padding:0"><h2 class="bt" style="margin-top:20px">Your 2-minute weekly self-check</h2><p class="say" style="font-size:15.5px">Post this next to the door. Every Friday, walk your station and check each item.</p></div><div class="jobaid weekly"><header><span>WEEKLY</span><b>Lab Self-Check</b></header><div class="wk">'+items.map(function(x){return '<label><input type="checkbox"><span>'+x+'</span></label>';}).join("")+'</div><p class="warn">Found something? Fix it if it’s quick and safe. Otherwise, tell your supervisor today.</p></div>';
+  return wrap("",d,"wide");
+};
+R.rate=function(){
+  var d=h("div",{class:"rate"}); d.innerHTML='<h3>How useful was this for your job?</h3><div class="row" role="group" aria-label="Rate from 1 to 5"></div><small>1 = not useful · 5 = I’ll use this every day</small><p data-thx hidden style="font:400 14px var(--sans);margin:12px 0 0">Thanks. In a real rollout, this rating feeds the course review.</p>';
+  for(var i=1;i<=5;i++){ (function(i){ var b=h("button",{type:"button","aria-pressed":String(S.rating===i),"aria-label":i+" out of 5"},String(i)); b.addEventListener("click",function(){ S.rating=i; save(); $$(".row button",d).forEach(function(x,j){ x.setAttribute("aria-pressed",String(j+1===i)); }); $("[data-thx]",d).hidden=false; }); $(".row",d).appendChild(b); })(i); }
+  return wrap("",d);
+};
 
-/* ---------- shared lesson header ---------- */
-function head(n, lesson){
-  return `<p class="count">Lesson ${n} of 7</p><h1>${lesson.title}</h1><div class="rule"></div>
-  ${lesson.why?`<div class="why"><small>Why this matters on the job</small><p class="say">${lesson.why}</p></div>`:""}
-  <div class="tools"><button class="chip" type="button" data-listen aria-pressed="false">▶ Listen</button><button class="chip" type="button" data-skip>Skip to practice</button></div>`;
+/* ================= pages ================= */
+var app=$("#app");
+function menuList(container, drawer){
+  SECTIONS.forEach(function(sec){ container.appendChild(h("div",{class:"menu-sec"},sec[0]));
+    sec[1].forEach(function(n){ var l=L[n]; var b=h("button",{class:"menu-row"+(S.done[n]?" done":""),type:"button"},'<svg class="ico" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 4h14M2 9h14M2 14h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="t">'+l.menu+'</span><span class="st" aria-hidden="true">'+(S.done[n]?"✓":"")+'</span>');
+      b.setAttribute("aria-label",l.menu+(S.done[n]?", completed":""));
+      if(drawer && cur && cur.n===n) b.setAttribute("aria-current","page");
+      b.addEventListener("click",function(){ if(drawer) closeDrawer(); go(l.id); }); container.appendChild(b); }); });
 }
-
-/* ---------- routing, menu, progress ---------- */
-const main=$("#main"); let cur=0;
-function idx(){ const h=location.hash.slice(1); const i=L.findIndex(x=>x.id===h); return i<0?0:i; }
-function complete(i){ if(!state.done[i]){ state.done[i]=1; save(); drawMenu(); drawProg(); } }
-function drawProg(){ const n=Object.keys(state.done).length; $("#progBar").style.width=Math.min(100,Math.round(n/L.length*100))+"%"; }
-function drawMenu(){
-  const ol=$("#menuList"); ol.innerHTML="";
-  L.forEach((l,i)=>{ const li=el("li",{class:state.done[i]?"done":""}); const b=el("button",{type:"button"},`<span class="dot" aria-hidden="true">${state.done[i]?"✓":""}</span><span>${i>0&&i<8?i+". ":""}${l.short}${state.done[i]?'<span class="note"> · done</span>':""}</span>`); if(i===cur) b.setAttribute("aria-current","page"); b.addEventListener("click",()=>{ closeMenu(); go(i); }); li.appendChild(b); ol.appendChild(li); });
+function cover(){
+  $("#topbar").hidden=true; $("#progress").hidden=true; document.title="Lab Ready: Chemical Safety for New Lab Technicians";
+  app.innerHTML="";
+  var c=h("section",{class:"cover",style:"background-image:url('img/cover.jpg')"}); c.innerHTML='<div class="in"><div class="by"><span class="avatar" aria-hidden="true">TV</span>Tshwjxeeb Vaaj</div><h1>Lab Ready: Chemical Safety for New Lab Technicians</h1><div class="ctas"><button class="start" type="button">'+(Object.keys(S.done).length?"RESUME":"START")+'</button><button class="details-btn" type="button" aria-expanded="false">DETAILS <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="#fff" stroke-width="1.8" fill="none"/></svg></button></div><div class="details" hidden><b>About this course</b><ul><li>For newly hired adult lab technicians</li><li>About 30 minutes, or about 12 if you test out</li><li>10 lessons, scenario practice in each one</li><li>Listen, read, or skip straight to practice</li><li>Works on phones, with a keyboard, and with a screen reader</li></ul></div></div>';
+  app.appendChild(c);
+  $(".start",c).addEventListener("click",function(){ var nxt=1; for(var i=0;i<ORDER.length;i++){ if(!S.done[ORDER[i]]){ nxt=ORDER[i]; break; } } go(L[nxt].id); });
+  var db=$(".details-btn",c); db.addEventListener("click",function(){ var d=$(".details",c); d.hidden=!d.hidden; db.setAttribute("aria-expanded",String(!d.hidden)); });
+  app.appendChild(h("div",{style:"height:70px"}));
+  app.appendChild(wrap("tight",'<p>Your first week in a lab moves fast. This course walks you through the seven moments where safety decisions happen, from reading a label to knowing when to clean up a spill and when to call for help.</p><p>New to labs? Plan on about 30 minutes. Experienced? Ace the self-check and finish in about 12. Every lesson can be read aloud, has a transcript, and works with a keyboard.</p><p>Click START when you’re ready to begin.</p>'));
+  var m=h("div",{style:"margin-top:30px"}); menuList(m,false); app.appendChild(wrap("",m));
+  app.appendChild(foot());
 }
-function render(){
-  stopSpeech();
-  cur=idx(); const l=L[cur]; main.innerHTML="";
-  const autoDone=l.render(main);
-  if(autoDone) complete(cur);
-  // bottom nav
-  const nav=el("div",{class:"nav"});
-  const prev=el("button",{class:"btn ghost",type:"button"},"← Back"); prev.disabled=cur===0; prev.addEventListener("click",()=>go(cur-1));
-  const next=el("button",{class:"btn",type:"button"}, cur===L.length-1?"Back to start":"Continue →"); next.addEventListener("click",()=>go(cur===L.length-1?0:cur+1));
-  nav.append(prev,next); main.appendChild(nav);
+function foot(){ return h("footer",{class:"page-foot"},'<a href="#">© 2026 Lab Ready (concept)</a><a href="../../lab-ready.html">How this course was designed</a><p class="disclaim">Lab Ready is a portfolio concept course by Tshwjxeeb Vaaj, adapted from Cal/OSHA §5191 and a university Chemical Hygiene Plan. It hasn’t been delivered to learners and is not a substitute for your own lab’s safety training, SOPs and Chemical Hygiene Plan. The supplier on the sample label is fictional.</p>'); }
+
+var cur=null;
+function page(l){
+  cur=l; $("#topbar").hidden=false; $("#progress").hidden=false;
+  var prev=L[l.n-1]; var cr=$("#crumb"); cr.textContent=prev?(prev.n+" – "+prev.menu):"Lab Ready: Chemical Safety"; cr.onclick=function(){ prev?go(prev.id):go(""); };
+  cr.setAttribute("aria-label",prev?"Back to lesson "+prev.n+": "+prev.menu:"Back to course home");
+  document.title=l.title+" · Lab Ready";
+  app.innerHTML="";
+  var hd=h("header",{class:"lh"}); hd.innerHTML='<div class="col"><p class="count">'+l.n+' of 10</p><h1>'+l.title+'</h1><div class="by"><span class="avatar" aria-hidden="true">TV</span>Tshwjxeeb Vaaj</div><div class="rule"></div></div>'; app.appendChild(hd);
+  if(l.why){ var t=h("div"); t.innerHTML='<div class="why"><small>Why this matters on the job</small><p class="say">'+l.why+'</p></div><div class="tools"><button class="chip" type="button" data-listen aria-pressed="false"><span class="tri">▶</span> <span>Listen · '+l.mins+' min</span></button><button class="chip" type="button" data-trans aria-expanded="false">Read transcript</button><button class="chip" type="button" data-skip>Skip to practice</button></div><div class="transcript" hidden tabindex="0" aria-label="Lesson transcript"></div>'; app.appendChild(wrap("tight",t)); }
+  l.blocks.forEach(function(b){ var n=R[b.t](b); app.appendChild(n); });
+  // continue
+  var last=l.n===10;
+  var c=h("section",{class:"cont"}); c.innerHTML='<div class="col"><button type="button">'+(last?"Finish course":"Continue")+'</button></div>'; app.appendChild(c);
+  $("button",c).addEventListener("click",function(){ complete(l.n); if(last){ go(""); } else go(L[l.n+1].id); });
+  app.appendChild(foot());
   // tools
-  const ls=$("[data-listen]",main); ls&&ls.addEventListener("click",()=>toggleSpeech(ls));
-  if(ls && !("speechSynthesis" in window)) ls.remove();
-  const sk=$("[data-skip]",main); sk&&sk.addEventListener("click",()=>{ const a=$(".act",main); if(a){ a.scrollIntoView({block:"start"}); a.setAttribute("tabindex","-1"); a.focus({preventScroll:true}); } });
-  $("#topLesson").textContent=l.short; document.title=`${l.title} · Lab Ready`;
-  drawMenu(); drawProg();
-  window.scrollTo(0,0); main.focus({preventScroll:true});
+  var ls=$("[data-listen]",app); if(ls){ if(!("speechSynthesis" in window)) ls.remove(); else ls.addEventListener("click",function(){ toggleSpeech(ls,l); }); }
+  var tr=$("[data-trans]",app); if(tr) tr.addEventListener("click",function(){ var p=$(".transcript",app); if(p.hidden){ p.innerHTML=transcript(l); } p.hidden=!p.hidden; tr.setAttribute("aria-expanded",String(!p.hidden)); });
+  var sk=$("[data-skip]",app); if(sk) sk.addEventListener("click",function(){ var a=$(".kc,.story,.sort,.stage,.mrow",app); if(a){ var top=a.getBoundingClientRect().top+window.pageYOffset-70; window.scrollTo(0,top); } });
+  drawChrome();
 }
-function go(i){ i=Math.max(0,Math.min(L.length-1,i)); if(location.hash.slice(1)===L[i].id) render(); else location.hash=L[i].id; }
+function transcript(l){ return [l.title].concat($$(".say",app).map(function(p){return p.textContent;})).map(function(t){return '<p style="margin:0 0 10px">'+t.replace(/</g,"&lt;")+'</p>';}).join(""); }
+function stopSpeech(){ try{ if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){} }
+function toggleSpeech(btn,l){ if(btn.getAttribute("aria-pressed")==="true"){ stopSpeech(); btn.setAttribute("aria-pressed","false"); $("span:last-child",btn).textContent="Listen · "+l.mins+" min"; return; }
+  var u=new SpeechSynthesisUtterance([l.title].concat($$(".say",app).map(function(p){return p.textContent;})).join(". ")); u.onend=function(){ btn.setAttribute("aria-pressed","false"); $("span:last-child",btn).textContent="Listen · "+l.mins+" min"; };
+  stopSpeech(); speechSynthesis.speak(u); btn.setAttribute("aria-pressed","true"); $("span:last-child",btn).textContent="Stop"; }
+
+function complete(n){ if(!S.done[n]){ S.done[n]=1; save(); drawChrome(); } }
+function drawChrome(){ var n=Object.keys(S.done).length; $("#progBar").style.width=(n*10)+"%"; $("#pct").textContent=n*10+"% complete"; $("#dProg").textContent=n+" of 10 lessons complete"; var dm=$("#drawerMenu"); dm.innerHTML=""; menuList(dm,true); }
+
+/* drawer */
+var drawer=$("#drawer"), mb=$("#menuBtn");
+function openDrawer(){ drawChrome(); drawer.classList.add("open"); drawer.setAttribute("aria-hidden","false"); mb.setAttribute("aria-expanded","true"); var c=$("[aria-current]",drawer)||$(".menu-row",drawer); if(c) c.focus(); }
+function closeDrawer(){ drawer.classList.remove("open"); drawer.setAttribute("aria-hidden","true"); mb.setAttribute("aria-expanded","false"); mb.focus(); }
+mb.addEventListener("click",openDrawer); $("[data-close]",drawer).addEventListener("click",closeDrawer);
+document.addEventListener("keydown",function(e){ if(e.key==="Escape" && drawer.classList.contains("open")) closeDrawer(); });
+
+/* routing */
+function render(){ stopSpeech(); var id=location.hash.replace(/^#/,""); var l=id?byId(id):null; if(l) page(l); else { cur=null; cover(); } window.scrollTo(0,0); app.focus({preventScroll:true}); }
+function go(id){ if(location.hash.replace(/^#/,"")===id) render(); else location.hash=id; }
 window.addEventListener("hashchange",render);
-
-/* speech */
-function stopSpeech(){ try{ window.speechSynthesis && speechSynthesis.cancel(); }catch(e){} }
-function toggleSpeech(btn){
-  if(btn.getAttribute("aria-pressed")==="true"){ stopSpeech(); btn.setAttribute("aria-pressed","false"); btn.textContent="▶ Listen"; return; }
-  const text=[$("h1",main).textContent, ...$$(".say",main).map(p=>p.textContent)].join(". ");
-  const u=new SpeechSynthesisUtterance(text); u.rate=1; u.onend=()=>{ btn.setAttribute("aria-pressed","false"); btn.textContent="▶ Listen"; };
-  stopSpeech(); speechSynthesis.speak(u); btn.setAttribute("aria-pressed","true"); btn.textContent="■ Stop";
-}
-
-/* menu open/close */
-const menu=$("#menu"), mb=$("#menuBtn");
-function openMenu(){ menu.classList.add("open"); menu.setAttribute("aria-hidden","false"); mb.setAttribute("aria-expanded","true"); const c=$("[aria-current]",menu)||$("button",menu); c&&c.focus(); }
-function closeMenu(){ menu.classList.remove("open"); menu.setAttribute("aria-hidden","true"); mb.setAttribute("aria-expanded","false"); mb.focus(); }
-mb.addEventListener("click",openMenu);
-$("[data-close]",menu).addEventListener("click",closeMenu);
-document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&menu.classList.contains("open")) closeMenu(); });
-
 render();
 })();
 </script>
