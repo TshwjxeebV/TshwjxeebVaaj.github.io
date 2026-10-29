@@ -18,7 +18,8 @@ COACHING_URL = "play/coaching/"
 PIP_URL = "play/pip/"
 TV_URL = "play/tv-sales/"
 SW_URL = "play/scheduling/"
-LAB_RISE_URL = "https://share.articulate.com/BtDI2U6F0Qdm4Yr-KZmlb"
+LAB_RISE_URL = ""  # Rise trial ended; the share link no longer works
+LAB_COURSE_URL = "play/lab-ready/"  # live HTML rebuild of the Rise course
 LAB_PROTO_URL = "https://www.figma.com/proto/M62ZWJzPvCysgnzbNSUhmy/?node-id=2-2&starting-point-node-id=2%3A2"
 LAB_FIGMA_URL = "https://www.figma.com/design/M62ZWJzPvCysgnzbNSUhmy/?node-id=22-2"
 # ----------------------------------------------------
@@ -336,7 +337,7 @@ home += f"""<main>
     <p class="lead reveal work-lead">Leadership, corporate compliance and K-12: one way of designing, for any team.</p>
     <div class="tiles c3">
       <a class="tile reveal" href="coaching.html"><div class="shot"><img src="assets/img/tile-coaching.jpg" alt="Coaching Through Conflict on a laptop at home" loading="lazy"></div><h3>Coaching Through Conflict</h3><span class="role">Leadership · Scenario-based training →</span></a>
-      <a class="tile reveal d1" href="lab-ready.html"><div class="shot"><img src="assets/img/tile-labready.jpg" alt="A lab technician in safety goggles pouring a liquid into a flask" loading="lazy"></div><h3>Lab Ready</h3><span class="role">Corporate · Compliance in Rise 360 →</span></a>
+      <a class="tile reveal d1" href="lab-ready.html"><div class="shot"><img src="assets/img/tile-labready.jpg" alt="A lab technician in safety goggles pouring a liquid into a flask" loading="lazy"></div><h3>Lab Ready</h3><span class="role">Corporate · Compliance course, built in Rise 360 →</span></a>
       <a class="tile reveal d2" href="pip.html"><div class="shot"><img src="assets/img/tile-pip.jpg" alt="Pip's Number Garden on a phone on a wooden table" loading="lazy"></div><h3>Pip's Number Garden</h3><span class="role">K-12 · Game-based learning →</span></a>
     </div>
     <div class="more-work reveal">
@@ -912,31 +913,31 @@ write("software-training.html", sw)
 
 
 # ======================= LAB READY =======================
-LAB_CTA = ("View the Rise course", LAB_RISE_URL) if LAB_RISE_URL else ("Click through the prototype", LAB_PROTO_URL)
+LAB_CTA = ("Take the course", LAB_COURSE_URL)
 lab = head("Lab Ready · Tshwjxeeb Vaaj",
-           "A scenario-based chemical safety onboarding course for new lab technicians, designed for adult learners and built in Rise 360.")
+           "A scenario-based chemical safety onboarding course for new lab technicians, designed for adult learners, built first in Rise 360 and now live as an HTML course.")
 lab += nav("work") + '<main class="cs">\n'
 lab += cs_hero("assets/img/labready-hero.jpg", None, None, LAB_CTA[0], LAB_CTA[1], right=True,
                title="Lab Ready", sub="A chemical safety onboarding course for new lab technicians")
-lab += glance("Portfolio concept · Built and published in Articulate Rise 360",
+lab += glance("Portfolio concept · Built first in Articulate Rise 360, now live as an HTML course",
     "Newly hired adult lab technicians, from career changers to experienced techs, and the supervisors who onboard them.",
     "A 70-rule safety contract that people skim, sign and forget, with facts that didn't match Cal/OSHA.",
-    "Sole designer and developer: source review, objectives, wireframes, Rise 360 build, job aid and evaluation plan.",
+    "Sole designer and developer: source review, objectives, wireframes, Rise 360 build, HTML rebuild, job aid and evaluation plan.",
     "Every rule had to match Cal/OSHA §5191, and experienced hires needed a way to test out.",
-    "A published Rise 360 course that turns about 70 rules into 7 practiced decisions, plus a one-page bench job aid.")
+    "A live course that turns about 70 rules into 7 practiced decisions, plus a one-page bench job aid.")
 lab += f"""<section class="cs-intro"><div class="wrap reveal">
-  <p>Lab Ready is a scenario-based onboarding course that turns a 70-rule chemical safety contract into seven decisions new lab technicians actually face: reading a label, checking a fume hood, knowing when to clean up a spill and when to call for help, and leaving a station safe for the next person. I designed it for adult learners and built and published it in Articulate Rise 360, with practice in every lesson and a job aid that stays at the bench.</p>
+  <p>Lab Ready is a scenario-based onboarding course that turns a 70-rule chemical safety contract into seven decisions new lab technicians actually face: reading a label, checking a fume hood, knowing when to clean up a spill and when to call for help, and leaving a station safe for the next person. I designed it for adult learners and built it first in Articulate Rise 360. When my Rise trial ended, I rebuilt it as an HTML course so it stays free to view, with practice in every lesson and a job aid that stays at the bench.</p>
   {meta_blocks([("Audience", "Newly hired adult lab technicians, from career changers to techs with years at other labs, and the supervisors who onboard them."),
                 ("Responsibilities", "Needs Analysis, Source Review (Cal/OSHA §5191 and a university Chemical Hygiene Plan), Learning Objectives, Adult Learning & UDL Design, Figma Wireframes & Prototype, Rise 360 Development, Job Aids, Evaluation Planning"),
-                ("Tools Used", "Articulate Rise 360, Figma, Figma AI, Claude")], cols=True)}
+                ("Tools Used", "Articulate Rise 360, Figma, Figma AI, Claude, HTML, CSS, JavaScript")], cols=True)}
   <p class="cs-note">Lab Ready is a concept course and hasn't been delivered to learners yet. I adapted the source documents without naming the school district or university they came from.</p>
-  <div class="hero-btns">{pill(LAB_CTA[1], LAB_CTA[0], external=True)}</div>
+  <div class="hero-btns">{pill(LAB_CTA[1], LAB_CTA[0])}</div>
 </div></section>
 """
 lab += process_strip([
     ("Analyze", "Compared the safety contract I handed my own students with Cal/OSHA §5191 and a university Chemical Hygiene Plan, and found where they disagreed.", "#thinking", None),
     ("Design", "Reorganized about 70 rules into 7 decision moments, wrote objectives, and planned a 6-touchpoint training journey.", "#journey", "assets/img/labready-design-notes.png"),
-    ("Develop", "Wireframed every lesson first, then built and published the course in Articulate Rise 360.", "#inside", "assets/img/labready-wireframe.jpg"),
+    ("Develop", "Wireframed every lesson first, built the course in Articulate Rise 360, then rebuilt it as a live HTML course.", "#inside", "assets/img/labready-wireframe.jpg"),
     ("Evaluate", "Planned all four Kirkpatrick levels, from a usefulness rating to a 30-day supervisor check.", "#evaluation", None),
 ])
 lab += """<section><div class="wrap two">
@@ -951,7 +952,7 @@ lab += objectives(
      ("Check a fume hood and choose the right controls and protective gear for a task.",
       "Measured by: finding the problems in Hood Check, plus the glove question."),
      ("Decide whether to clean up a spill or call for help.",
-      "Mastery: the right call in all three Clean It or Call It? scenes."),
+      "Mastery: the right call in all four Clean It or Call It? scenes."),
      ("Respond to a splash, a fire or an unknown chemical in the first 60 seconds.",
       "Measured by: the fire and old ether bottle scenarios."),
      ("Label and sort hazardous waste, and leave the station safe for the next person.",
@@ -964,7 +965,7 @@ THOUGHTS = [
     ("Teach it to adults", "The same problem follows people into their first lab job. I asked how I'd teach what I taught my students to an adult new hire, someone who brings experience, wants to know why, and needs to use it right away."),
     ("Read the real standards", "Cal/OSHA §5191 and a university Chemical Hygiene Plan raised the bar and exposed errors: 15 vs. 20 minutes for an eye flush, the outdated term MSDS, and a contact lens rule the adult standard doesn't include."),
     ("Turn notes into scenarios", "I took pages of regulations and long bullet lists and boiled them down to 7 decisions, each one something learners can practice: a hood to inspect, a spill to clean up or call in, a waste label to fix."),
-    ("Make it work for real adults", "I added a test-out path for experienced techs, a “why this matters” card in every lesson, audio and transcripts, and a 6-touchpoint journey. Then I built and published the course in Rise."),
+    ("Make it work for real adults", "I added a test-out path for experienced techs, a “why this matters” card in every lesson, audio and transcripts, and a 6-touchpoint journey. Then I built the course in Rise, and later rebuilt it in HTML so it stays live."),
 ]
 thoughts = "".join(f'<div class="step-card"><span class="ph">Step {i:02d}</span><h3 class="h-sm">{e(h)}</h3><p>{e(b)}</p></div>'
                    for i, (h, b) in enumerate(THOUGHTS, 1))
@@ -1002,7 +1003,7 @@ lab += f"""<section id="thinking" class="process"><div class="wrap reveal">
     <p>Training doesn't end when the course does. I planned a journey from before day one to a refresher every three years: a welcome email with the lab's safety plan, a day-one walk-through, the course, a station card and weekly self-check, a supervisor check at 30 days, and a short refresher before any new chemical or procedure.</p>
   </div>
   <div class="wide-visual reveal d1"><img src="assets/img/labready-journey.png" alt="Six touchpoints in a row: before day one, day one, the Lab Ready course, on the job, at 30 days, and ongoing" loading="lazy"></div>
-  <p style="margin-top:28px" class="reveal">{pill(LAB_CTA[1], "Take the course in Rise", external=True)}</p>
+  <p style="margin-top:28px" class="reveal">{pill(LAB_CTA[1], "Take the course")}</p>
 </div></section>
 """
 lab += evaluation(
@@ -1014,19 +1015,19 @@ lab += evaluation(
      ("4 · Results", "A safer lab.", "More near misses reported, and fewer inspection findings and incidents.", "Planned")])
 lab += access(
     ["Every hazard pictogram has a text label, so color is never the only cue.",
-     "Audio narration, a transcript and captions are available in every lesson.",
+     "A Listen button reads every lesson aloud, and the on-screen text doubles as the transcript.",
      "Experienced hires can test out with a short self-check; everyone else follows a guided path.",
-     "No time limit on the final check, and a timer that can be turned off in timed practice.",
-     "Alt text on every graphic, and a click-to-place option for drag activities."],
-    ["Check every color pair in the Rise theme against WCAG 2.2 AA contrast.",
-     "Test the full course with a keyboard and a screen reader.",
-     "Rebuild Hood Check and Clean It or Call It? in Storyline with a logical keyboard focus order.",
+     "No time limit on the final check or any practice activity.",
+     "Alt text on every graphic, tap-to-place sorting instead of drag and drop, and every activity works with a keyboard."],
+    ["Check every color pair in the course theme against WCAG 2.2 AA contrast.",
+     "Test the full course with a screen reader.",
+     "Rebuild the course in Storyline 360 for LMS delivery with SCORM tracking.",
      "Publish the Lab Ready Card as an accessible PDF."])
 lab += f"""<section><div class="wrap reveal">
   <h2 class="h-md">Lessons Learned</h2>
   {paras("The biggest lesson was that the source material had problems of its own. The student contract and the adult standards disagreed on simple facts, like how long to flush an eye. Reading the actual regulation, not a summary of it, changed the course.",
-         "I also learned Rise by building the whole course in it, from the first block to the published link. Wireframing first meant every block had a job before I opened the editor. Where Rise's built-in blocks couldn't do what I planned for Storyline, I swapped in a labeled graphic and a scenario block, and I noted the Storyline upgrade as the next step.")}
-  <div class="hero-btns" style="margin-top:28px">{pill(LAB_CTA[1], LAB_CTA[0], external=True)}</div>
+         "I also learned Rise by building the whole course in it, from the first block to the published link. Wireframing first meant every block had a job before I opened the editor. Where Rise's built-in blocks couldn't do what I planned for Storyline, I swapped in a labeled graphic and a scenario block. When my Rise trial ended, I rebuilt the whole course in HTML, which let me turn Hood Check and Clean It or Call It? into true interactions.")}
+  <div class="hero-btns" style="margin-top:28px">{pill(LAB_CTA[1], LAB_CTA[0])}</div>
 </div></section>
 """
 lab += next_prev(("Coaching Through Conflict", "coaching.html"), ("Pip's Number Garden", "pip.html"))
